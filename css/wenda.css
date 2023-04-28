@@ -48,6 +48,7 @@
 #fixed-block {
     background-color: #40414F;
     bottom: 20px;
+    border-radius:5px;
 }
 
 #kw-target-box {
