@@ -26,6 +26,7 @@
     overflow-y: auto;
     border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
+    border-color: #353333;
 }
 
 #article-wrapper::-webkit-scrollbar {

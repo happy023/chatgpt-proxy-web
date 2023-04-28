@@ -21,7 +21,7 @@
                     <h2 class="logo"><a class="links" id="clean" title="清空对话信息"><span class="logo-title">ChatGPT</span></a></h2>
                 </div>
                 <div class="header-logo">
-                    <h2 class="logo"><a class="links" href="https://github.com/dirk1983/chatgpt"><span class="logo-title">获取源码</span></a></h2>
+                    <span class="logo-title">本站基于<a class="links" href="https://github.com/dirk1983/chatgpt" target="_blank">dirk1983/chatgpt</a>修改而来</span>
                 </div>
             </div>
         </header>
