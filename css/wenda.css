@@ -1,6 +1,16 @@
 .logo-title {
-    color: #fff;
-    text-decoration: none
+    color: white;
+    text-decoration: none; 
+}
+.logo-about {
+    color: gray;
+    text-decoration: none;
+    font-size: x-small;
+}
+.logo-about .links{
+    color: rgb(236, 230, 230);
+    text-decoration: none;
+    font-size: x-small;
 }
 
 .layout-header .logo .links {

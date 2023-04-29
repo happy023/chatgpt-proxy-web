@@ -9,7 +9,32 @@
     <link rel="stylesheet" href="css/wenda.css?v1.3">
     <link rel="stylesheet" href="css/hightlight.css">
     <style>
-  
+     #fold1 {
+            position: fixed;
+            right: 0;
+            transform: translateY(10%);
+            width: 2px;
+            border-radius: 4px 0px 0px 4px;
+            height: '100%';
+            background-color: #f4f6f3c6;
+            text-align: center;
+            height: 600px;
+            cursor: pointer;
+            top: 10;
+        }
+
+        #popup1 {
+            position: fixed;
+            right: 0;
+            transform: translateY(10%); 
+            border-radius: 8px 0px 0px 8px;
+            width: 200px;
+            height: 600px;
+            background-color: #545553c6;
+            border: none;
+            display: none;
+            top: 10;
+        }
     </style>
 </head>
 
@@ -18,10 +43,10 @@
         <header class="layout-header">
             <div class="container" data-flex="main:justify cross:start">
                 <div class="header-logo">
-                    <h2 class="logo"><a class="links" id="clean" title="清空对话信息"><span class="logo-title">ChatGPT</span></a></h2>
+                    <h2 class="logo"><a class="links" id="clean" title="清空对话信息"><span class="logo-title">Chat2AI</span></a></h2>
                 </div>
                 <div class="header-logo">
-                    <span class="logo-title">本站基于<a class="links" href="https://github.com/dirk1983/chatgpt" target="_blank">dirk1983/chatgpt</a>修改而来</span>
+                    <span class="logo-about">Power by <a class="links" href="http://okcode.cn/" target="_blank">OKCODE.CN</a></span>
                 </div>
             </div>
         </header>
@@ -94,6 +119,28 @@
             }
         });
     </script>
+
+    <!-- <div id="fold1"></div>
+    <div id="popup1"><p style="margin: 5 5 5 5;color: white;">
+        使用说明巴贝拉不拉不拉了吧
+        <br>使用说明巴贝拉不拉不拉了吧
+        <br>使用说明巴贝拉不拉不拉了吧
+        <br>使用说明巴贝拉不拉不拉了吧
+        <br>使用说明巴贝拉不拉不拉了吧
+        <p>
+    </div>
+    <script>
+        var fold = document.getElementById('fold1');
+        var popup = document.getElementById('popup1');
+        fold.addEventListener('mouseover', function () {
+            popup.style.display = 'block';
+            fold.style.display = 'none';
+        });
+        popup.addEventListener('mouseleave', function () {
+            popup.style.display = 'none';
+            fold.style.display = 'block';
+        }); 
+    </script> -->
 </body>
 
 </html>
