@@ -2301,3 +2301,22 @@ a.unlinks-deco {
     color: var(--zhuluan-black-3-color);
     background: linear-gradient(90deg, var(--zhuluan-custom-e8-color), var(--zhuluan-custom-d8-color));
 }
+
+#login-wx {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    background-color: rgba(255, 250, 250, 0);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+    z-index: 10000; 
+    display: none; 
+}
+
+#user-id{
+    color: white;
+    font-size: small;
+}

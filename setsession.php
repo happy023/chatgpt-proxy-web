@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['user_id'])){  
+    echo '{"success":false,"login":false}';
+    exit();
+} 
 $context = json_decode($_POST['context'] ?: "[]") ?: [];
 $postData = [
     "model" => "gpt-3.5-turbo",
@@ -15,7 +20,6 @@ if (!empty($context)) {
 }
 $postData['messages'][] = ['role' => 'user', 'content' => $_POST['message']];
 $postData = json_encode($postData);
-session_start();
 $_SESSION['data'] = $postData;
 if ((isset($_POST['key'])) && (!empty($_POST['key']))) {
     $_SESSION['key'] = $_POST['key'];
