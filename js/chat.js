@@ -231,7 +231,7 @@ $(document).ready(function () {
                     $("#kw-target").attr("disabled", true);
                     autoresize();
                     $("#ai-btn").html('<i class="iconfont icon-wuguan"></i>中止');
-                    layer.msg("处理成功！");
+                    // layer.msg("处理成功！");
                     isstarted = false;
                     answer = randomString(16);
                     $("#article-wrapper").append('<li class="article-title" id="q' + answer + '"><pre></pre></li>');
