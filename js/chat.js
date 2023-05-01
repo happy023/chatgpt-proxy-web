@@ -496,6 +496,7 @@ function showqrcode(){
             var wxImg = document.getElementById('login-wx');
             wxImg.style.display = "flex"; 
             wxImg.innerHTML = result;
+            timeOut = 0;
             setInterval(checkStatus, 1000);
         }
     });
