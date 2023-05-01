@@ -25,12 +25,6 @@
     color: #fff;
 }
 
-.xiezuo-header {
-    max-height: calc(100vh - 30px);
-    overflow-y: auto;
-    min-height: 200px;
-}
-
 #article-wrapper {
     height: calc(100vh - 178px);
     overflow-y: auto;
@@ -128,29 +122,6 @@
 #count-down {
     font-size: 20px;
     color: red;
-}
-
-#sure-pay {
-    margin-top: 10px;
-    display: block;
-    width: 120px;
-    height: 40px;
-    line-height: 40px;
-    border: 1px solid var(--zhuluan-border-color);
-    border-radius: var(--zhuluan-primary-border-radius);
-    background-color: #0188fb;
-    color: #fff;
-    -webkit-border-radius: var(--zhuluan-primary-border-radius);
-    -moz-border-radius: var(--zhuluan-primary-border-radius);
-    -ms-border-radius: var(--zhuluan-primary-border-radius);
-    -o-border-radius: var(--zhuluan-primary-border-radius);
-    margin-left: 50%;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    cursor: pointer;
 }
 
 li.article-title {
