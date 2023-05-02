@@ -6,7 +6,7 @@ session_start();
 $postData = $_SESSION['data'];
 $_SESSION['response'] = "";
 $ch = curl_init();
-$OPENAI_API_KEY = "sk-replace_with_your_api_key_dude";
+$OPENAI_API_KEY = "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";
 if (isset($_SESSION['key'])) {
     $OPENAI_API_KEY = $_SESSION['key'];
 }
@@ -41,7 +41,22 @@ $callback = function ($ch, $data) {
         }
     } else {
         echo $data;
-        $_SESSION['response'] .= $data;
+        
+        $answer = "";
+        if(substr(trim($str), -6) != "[DONE]"){
+            $str = substr($data,6);  
+            $responsearr = explode("\r\ndata:", $str);
+    
+            foreach ($responsearr as $msg) {
+                $contentarr = json_decode(trim($msg) , true);
+                if (isset($contentarr['choices'][0]['delta']['content'])) {
+                    $answer .= $contentarr['choices'][0]['delta']['content'];
+                }
+            }
+        }else{
+            $answer .= $data;
+        }
+        $_SESSION['response'] .= $answer;
     }
     return strlen($data);
 };
@@ -58,18 +73,19 @@ curl_setopt($ch, CURLOPT_WRITEFUNCTION, $callback);
 
 curl_exec($ch);
 
-$answer = "";
-if (substr(trim($_SESSION['response']), -6) == "[DONE]") {
-    $_SESSION['response'] = substr(trim($_SESSION['response']), 0, -6) . "{";
-}
-$responsearr = explode("}\n\ndata: {", $_SESSION['response']);
+// $answer = "";
+// if (substr(trim($_SESSION['response']), -6) == "[DONE]") {
+//     $_SESSION['response'] = substr(trim($_SESSION['response']), 0, -6) . "{";
+// }
+// $responsearr = explode("}\n\ndata: {", $_SESSION['response']);
 
-foreach ($responsearr as $msg) {
-    $contentarr = json_decode("{" . trim($msg) . "}", true);
-    if (isset($contentarr['choices'][0]['delta']['content'])) {
-        $answer .= $contentarr['choices'][0]['delta']['content'];
-    }
-}
+// foreach ($responsearr as $msg) {
+//     $contentarr = json_decode("{" . trim($msg) . "}", true);
+//     if (isset($contentarr['choices'][0]['delta']['content'])) {
+//         $answer .= $contentarr['choices'][0]['delta']['content'];
+//     }
+// }
+$answer = $_SESSION['response'];
 
 $questionarr = json_decode($_SESSION['data'], true);
 $filecontent = $_SERVER["REMOTE_ADDR"] . " | " . date("Y-m-d H:i:s") . "\n";

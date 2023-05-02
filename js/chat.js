@@ -118,6 +118,7 @@ function autoresize() {
 }
 
 $(document).ready(function () {
+    let running = false;
     initcode();
     autoresize();
     $("#kw-target").on('keydown', function (event) {
@@ -137,7 +138,7 @@ $(document).ready(function () {
 
     $("#ai-btn").click(function () {
         if ($("#kw-target").is(':disabled')) {
-            clearInterval(timer);
+            running = false;
             $("#kw-target").val("");
             $("#kw-target").attr("disabled", false);
             autoresize();
@@ -241,7 +242,7 @@ $(document).ready(function () {
                     $("#article-wrapper").append('<li class="article-content" id="' + answer + '"></li>');
                     let str_ = '';
                     let i = 0;
-                    timer = setInterval(() => {
+                    let interval = () => {
                         let newalltext = alltext;
                         let islastletter = false;
                         //有时服务器错误地返回\\n作为换行符，尤其是包含上下文的提问时，这行代码可以处理一下。
@@ -254,7 +255,7 @@ $(document).ready(function () {
                             if ((str_.split("```").length % 2) == 0) strforcode += "\n```\n";
                         } else {
                             if (isalltext) {
-                                clearInterval(timer);
+                                running = false;
                                 strforcode = str_;
                                 islastletter = true;
                                 $("#kw-target").val("");
@@ -286,7 +287,13 @@ $(document).ready(function () {
                             $(this).html("<button onclick='copycode(this);' class='codebutton'>复制</button>" + $(this).html());
                         });
                         document.getElementById("article-wrapper").scrollTop = 100000;
-                    }, 30);
+                        
+                        if(running){
+                            setTimeout(interval, 0);
+                        }
+                    };
+                    running = true;
+                    setTimeout(interval, 0);
                 }
                 if (event.data == "[DONE]") {
                     isalltext = true;
