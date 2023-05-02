@@ -265,24 +265,9 @@ $(document).ready(function () {
                                 if (!isMobile()) $("#kw-target").focus();
                             }
                         }
-                        //let arr = strforcode.split("```");
-                        //for (var j = 0; j <= arr.length; j++) {
-                        //    if (j % 2 == 0) {
-                        //        arr[j] = arr[j].replace(/\n\n/g, '\n');
-                        //        arr[j] = arr[j].replace(/\n/g, '\n\n');
-                        //        arr[j] = arr[j].replace(/\t/g, '\\t');
-                        //        arr[j] = arr[j].replace(/\n {4}/g, '\n\\t');
-                        //        arr[j] = $("<div>").text(arr[j]).html();
-                        //    }
-                        //}
-
-                        //var converter = new showdown.Converter();
-                        //newalltext = converter.makeHtml(arr.join("```"));
                         newalltext = mdHtml.render(strforcode);
-                        //newalltext = newalltext.replace(/\\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
                         $("#" + answer).html(newalltext);
                         if (islastletter) MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                        //if (document.querySelector("[id='" + answer + "']" + " pre code")) document.querySelectorAll("[id='" + answer + "']" + " pre code").forEach(el => { hljs.highlightElement(el); });
                         $("#" + answer + " pre code").each(function () {
                             $(this).html("<button onclick='copycode(this);' class='codebutton'>复制</button>" + $(this).html());
                         });
