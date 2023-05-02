@@ -6,7 +6,7 @@ session_start();
 $postData = $_SESSION['data'];
 $_SESSION['response'] = "";
 $ch = curl_init();
-$OPENAI_API_KEY = "sk-KEYXXXX";
+$OPENAI_API_KEY = "sk-KEY";
 if (isset($_SESSION['key'])) {
     $OPENAI_API_KEY = $_SESSION['key'];
 }
@@ -18,6 +18,8 @@ $headers  = [
 
 setcookie("errcode", ""); //EventSource无法获取错误信息，通过cookie传递
 setcookie("errmsg", "");
+
+$curr_size = 0;
 
 $callback = function ($ch, $data) {
     $complete = json_decode($data);
@@ -40,22 +42,44 @@ $callback = function ($ch, $data) {
             setcookie("errcode", "model_overloaded");
         }
     } else {
-        echo $data;
+        $logfile = "/www/wwwroot/bot.okcode.cn/server_logs/ai_response.log"; 
+            error_log("data - ". $data."\n", 3, $logfile);
         
         $answer = "";
-        if(substr(trim($str), -6) != "[DONE]"){
-            $str = substr($data,6);  
-            $responsearr = explode("\r\ndata:", $str);
-    
-            foreach ($responsearr as $msg) {
-                $contentarr = json_decode(trim($msg) , true);
-                if (isset($contentarr['choices'][0]['delta']['content'])) {
-                    $answer .= $contentarr['choices'][0]['delta']['content'];
-                }
-            }
-        }else{
-            $answer .= $data;
+        $done = false;
+        //移除前面的“data: ”
+        $str = trim($data);
+        $str = substr($str,6);  
+        if(substr($str, -6) == "[DONE]"){
+            $done = true;
+            $str = substr($str, 0, -6);
+            $str = trim($str);
         }
+        $responsearr = explode("\n\ndata:", $str);
+    
+        foreach ($responsearr as $msg) {
+            $contentarr = json_decode(trim($msg) , true);
+            if (isset($contentarr['choices'][0]['delta']['content'])) {
+                $answer .= $contentarr['choices'][0]['delta']['content'];
+            }
+        } 
+        // // 注意:这里有缓存问题，数据太少并不会立即发送，然后openai接口的响应很慢，反而导致界面数据显示有卡顿感
+        // if($done){
+        //     echo("data: ".str_replace("\n", "\\n", $answer)."\n\n");
+        //     echo("data: [DONE]\n\n");
+        // }else{
+        //     echo("data: ".str_replace("\n", "\\n", $answer)."\n\n");
+        // } 
+        // $curr_size += strlen($answer);
+        // $chunk_size = 10;
+        // if($curr_size>=$chunk_size){
+        //     error_log("开始推送 - ". $curr_size."-".$chunk_size."\n", 3, $logfile);
+        //     $curr_size = 0;
+        //     ob_flush();
+        //     flush();
+        // }
+        echo $data;
+
         $_SESSION['response'] .= $answer;
     }
     return strlen($data);
@@ -72,6 +96,7 @@ curl_setopt($ch, CURLOPT_WRITEFUNCTION, $callback);
 //curl_setopt($ch, CURLOPT_PROXY, "http://127.0.0.1:1081");
 
 curl_exec($ch);
+ 
 
 // $answer = "";
 // if (substr(trim($_SESSION['response']), -6) == "[DONE]") {
@@ -90,7 +115,8 @@ $answer = $_SESSION['response'];
 $questionarr = json_decode($_SESSION['data'], true);
 $filecontent = $_SERVER["REMOTE_ADDR"] . " | " . date("Y-m-d H:i:s") . "\n";
 $filecontent .= "Q:" . end($questionarr['messages'])['content'] .  "\nA:" . trim($answer) . "\n----------------\n";
-$myfile = fopen(__DIR__ . "/chatjikk1688.txt", "a") or die("Writing file failed.");
+$user_id = $_SESSION['user_id'];
+$myfile = fopen(__DIR__ . "/chat_logs/".$user_id.".txt", "a") or die("Writing file failed.");
 fwrite($myfile, $filecontent);
 fclose($myfile);
 curl_close($ch);

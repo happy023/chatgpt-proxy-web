@@ -274,14 +274,16 @@ $(document).ready(function () {
                         document.getElementById("article-wrapper").scrollTop = 100000;
                         
                         if(running){
-                            setTimeout(interval, 20);
+                            setTimeout(interval, 0);
                         }
                     };
                     running = true;
-                    setTimeout(interval, 20);
+                    setTimeout(interval, 0);
                 }
                 if (event.data == "[DONE]") {
                     isalltext = true;
+                    
+                    console.log('<<---',alltext);
                     contextarray.push([prompt, alltext]);
                     contextarray = contextarray.slice(-5); //只保留最近5次对话作为上下文，以免超过最大tokens限制
                     es.close();
@@ -295,6 +297,11 @@ $(document).ready(function () {
                         alltext += json.choices[0].delta.content;
                     }
                 }
+                // if (alltext == "") {
+                //     alltext = event.data.replaceAll('\\n', '\n'); //去掉回复消息中偶尔开头就存在的连续换行符
+                // } else {
+                //     alltext += event.data.replaceAll('\\n', '\n');
+                // }
             }
         }
 
