@@ -289,11 +289,11 @@ $(document).ready(function () {
                         document.getElementById("article-wrapper").scrollTop = 100000;
                         
                         if(running){
-                            setTimeout(interval, 0);
+                            setTimeout(interval, 20);
                         }
                     };
                     running = true;
-                    setTimeout(interval, 0);
+                    setTimeout(interval, 20);
                 }
                 if (event.data == "[DONE]") {
                     isalltext = true;
