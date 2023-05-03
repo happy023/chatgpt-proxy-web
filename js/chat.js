@@ -242,6 +242,7 @@ $(document).ready(function () {
                     $("#article-wrapper").append('<li class="article-content" id="' + answer + '"></li>');
                     let str_ = '';
                     let i = 0;
+                    const intervalTime = 15;
                     let interval = () => {
                         let newalltext = alltext;
                         let islastletter = false;
@@ -274,11 +275,11 @@ $(document).ready(function () {
                         document.getElementById("article-wrapper").scrollTop = 100000;
                         
                         if(running){
-                            setTimeout(interval, 0);
+                            setTimeout(interval, intervalTime);
                         }
                     };
                     running = true;
-                    setTimeout(interval, 0);
+                    setTimeout(interval, intervalTime);
                 }
                 if (event.data == "[DONE]") {
                     isalltext = true;
