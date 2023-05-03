@@ -63,22 +63,27 @@ $callback = function ($ch, $data) {
                 $answer .= $contentarr['choices'][0]['delta']['content'];
             }
         } 
-        // // 注意:这里有缓存问题，数据太少并不会立即发送，然后openai接口的响应很慢，反而导致界面数据显示有卡顿感
-        // if($done){
-        //     echo("data: ".str_replace("\n", "\\n", $answer)."\n\n");
-        //     echo("data: [DONE]\n\n");
-        // }else{
-        //     echo("data: ".str_replace("\n", "\\n", $answer)."\n\n");
-        // } 
-        // $curr_size += strlen($answer);
-        // $chunk_size = 10;
-        // if($curr_size>=$chunk_size){
-        //     error_log("开始推送 - ". $curr_size."-".$chunk_size."\n", 3, $logfile);
-        //     $curr_size = 0;
-        //     ob_flush();
-        //     flush();
-        // }
-        echo $data;
+
+        // 模式1 - 对应的js端也要修改
+        // 注意:这里有缓存问题，数据太少并不会立即发送，然后openai接口的响应很慢，反而导致界面数据显示有卡顿感
+        if($done){
+            echo("data: ".str_replace("\n", "\\n", $answer)."\n\n");
+            echo("data: [DONE]\n\n");
+        }else{
+            echo("data: ".str_replace("\n", "\\n", $answer)."\n\n");
+        } 
+        $curr_size += strlen($answer);
+        //这里是缓存字数
+        $chunk_size = 1;
+        if($curr_size>=$chunk_size){
+            error_log("开始推送 - ". $curr_size."-".$chunk_size."\n", 3, $logfile);
+            $curr_size = 0;
+            ob_flush();
+            flush();
+        }
+
+        //模式2
+        // echo $data;
 
         $_SESSION['response'] .= $answer;
     }

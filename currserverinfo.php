@@ -10,7 +10,14 @@
 // 开启session
 session_start();
 foreach($_SESSION as $key=>$value){
-    echo "<pre>".$value."</pre>";  
+    $type = gettype($value);
+    if($type=='string'){
+        echo "<pre>".str_replace("\n","<br>",$value)."</pre>";  
+    }else if($type == "Array"){
+        foreach($value as $v){ 
+            echo "<pre>".str_replace("\n","<br>",$v)."</pre>";  
+        }
+    }
 }
 ?>
 </body>

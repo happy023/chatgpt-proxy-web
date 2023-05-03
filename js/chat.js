@@ -289,19 +289,22 @@ $(document).ready(function () {
                     es.close();
                     return;
                 }
-                var json = eval("(" + event.data + ")");
-                if (json.choices[0].delta.hasOwnProperty("content")) {
+                if(event.data.startsWith('{')){
+                    var json = eval("(" + event.data + ")");
+                    if (json.choices[0].delta.hasOwnProperty("content")) {
+                        if (alltext == "") {
+                            alltext = json.choices[0].delta.content.replace(/^\n+/, ''); //去掉回复消息中偶尔开头就存在的连续换行符
+                        } else {
+                            alltext += json.choices[0].delta.content;
+                        }
+                    }
+                }else{
                     if (alltext == "") {
-                        alltext = json.choices[0].delta.content.replace(/^\n+/, ''); //去掉回复消息中偶尔开头就存在的连续换行符
+                        alltext = event.data.replaceAll('\\n', '\n'); //去掉回复消息中偶尔开头就存在的连续换行符
                     } else {
-                        alltext += json.choices[0].delta.content;
+                        alltext += event.data.replaceAll('\\n', '\n');
                     }
                 }
-                // if (alltext == "") {
-                //     alltext = event.data.replaceAll('\\n', '\n'); //去掉回复消息中偶尔开头就存在的连续换行符
-                // } else {
-                //     alltext += event.data.replaceAll('\\n', '\n');
-                // }
             }
         }
 
