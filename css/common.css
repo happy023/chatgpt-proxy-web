@@ -1853,3 +1853,32 @@ a.unlinks-deco {
     color: white;
     font-size: small;
 }
+
+.sidebar {
+    position: fixed;
+    top: 19%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 38px;
+    background-color: transparent;
+ }
+
+.sidebar .icon {
+    display: block;
+    margin-bottom: 30px;
+    width: 24px;
+    height: 24px;
+    fill: #333;
+}
+
+.wechat-popup {
+    position: fixed;
+    right: 28px;
+    top: 23%;
+    transform: translateY(10%);
+    border-radius: 8px 0px 0px 8px;
+    width: 200px;
+    height: 200px;
+    border: none;
+    display: none; 
+}

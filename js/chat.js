@@ -553,4 +553,38 @@ function expires(){
     }
 }
 
-checkLogin();
+function initRightPanelClickHandler(){
+    var icons = document.querySelectorAll('.sidebar .icon');
+    for (var i = 0; i < icons.length; i++) {
+        icons[i].addEventListener('click', function(e) {
+            switch(e.currentTarget.id){
+                case 'personal':
+                    
+                    break;
+                case 'about':
+                    
+                    break;
+                case 'wechat-group':
+                    
+                    break;
+            }
+        });
+    }
+}
+
+(function(){
+
+    checkLogin();
+    
+    initRightPanelClickHandler();
+
+    var wechatIcon = document.getElementById('wechat-group');
+    var popup = document.getElementById('wechat-popup');
+    wechatIcon.addEventListener('mouseover', function () {
+        popup.style.display = 'block';
+    });
+    wechatIcon.addEventListener('mouseleave', function () {
+        popup.style.display = 'none';
+    });  
+
+})();
