@@ -150,12 +150,12 @@ $(document).ready(function () {
         return false;
     });
 
-    $("#clean").click(function () {
-        $("#article-wrapper").html("");
-        contextarray = [];
-        layer.msg("清理完毕！");
-        return false;
-    });
+    // $("#clean").click(function () {
+    //     $("#article-wrapper").html("");
+    //     contextarray = [];
+    //     layer.msg("清理完毕！");
+    //     return false;
+    // });
 
     $("#showlog").click(function () {
         let btnArry = ['已阅'];
@@ -527,7 +527,7 @@ function checkStatus() {
             }else{
                 console.log(data.msg)
                 if(data.code == 201){
-                    $('#lgtext').html('<span style="color:#666;">'+data.msg+'</span>')
+                    $('#lgtext').html('<span>'+data.msg+'</span>')
                 }else if(data.code == 202){
                     $('#lgtext').html('<span style="color:#07c160;">'+data.msg+'</span>')
                 }

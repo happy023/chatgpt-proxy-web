@@ -1,0 +1,120 @@
+﻿<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chat2AI</title>
+    <link rel="stylesheet" href="css/common.css?v1.5">
+    <link rel="stylesheet" href="css/wenda.css?v1.3">
+    <link rel="stylesheet" href="css/hightlight.css">
+  
+</head>
+
+<body>
+    <div class="layout-wrap">
+        <header class="layout-header">
+            <div class="container" data-flex="main:justify cross:start">
+                <div class="header-logo">
+                    <h2 class="logo"><a class="links" id="clean" title=""><span class="logo-title">Chat2AI</span></a></h2>
+                </div>
+                <div><span id="user-id">未登录</span></div>
+                <div class="header-logo">
+                    <a style="font-size: 14px;margin-right: 10px;color: floralwhite;" href="http://chat.okcode.cn/" target="_blank">Chat2AI主站</a>
+                    <span class="logo-about">Powered by <a class="links" href="http://okcode.cn/" target="_blank">OKCODE.CN</a></span>
+                </div>
+            </div>
+        </header>
+        <div class="layout-content">
+            <div class="container">
+                <article class="article" id="article">
+                    <div class="article-box">
+                        <div class="precast-block" data-flex="main:left">
+                            <!--
+                            <div class="input-group">
+                                <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;API-KEY&nbsp;&nbsp;</span>
+                                <input type="password" id="key" style="border:1px solid grey;display:block;max-width:270px;width:calc(100% - 70px);" onload="this.focus();">
+                            </div>
+-->
+                            <div class="input-group input-group-keep">
+                                <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;连续对话：</span>
+                                <input type="checkbox" id="keep" checked style="min-width:220px;">
+                                <label for="keep"></label>
+                            </div>
+                            <div class="input-group input-group-preset">
+                                <span style="text-align: center;color:#9ca2a8;margin-top: 1px;">&nbsp;&nbsp;预设话术：</span>
+                                <select id="preset-text" class="preset-select" onchange="insertPresetText()" style="width:calc(100% - 90px);max-width:280px; border-radius: 5px; height: 25px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                        <ul id="article-wrapper">
+                        </ul>
+                        <div class="creating-loading" data-flex="main:center dir:top cross:center">
+                            <div class="semi-circle-spin"></div>
+                        </div>
+                        <div id="fixed-block">
+                            <div class="precast-block" id="kw-target-box" data-flex="main:left cross:center">
+                                <div id="target-box" class="box">
+                                    <textarea name="kw-target" placeholder="在此提问，按 Ctrl+Enter 发送" id="kw-target" autofocus rows=1></textarea>
+                                </div>
+                                <div class="right-btn layout-bar">
+                                    <p class="btn ai-btn bright-btn" id="ai-btn" data-flex="main:center cross:center"><i class="iconfont icon-wuguan"></i>发送</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div id="login-wx">
+        
+    </div>
+    
+    <div class="sidebar">
+        <svg t="1683296469440" id="personal" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4317"><path d="M512 0C230.4 0 0 230.4 0 512s230.4 512 512 512 512-230.4 512-512S793.6 0 512 0zM512 960c-249.6 0-448-198.4-448-448 0-249.6 198.4-448 448-448s448 198.4 448 448C960 761.6 761.6 960 512 960z" fill="#B28247" p-id="4318"></path><path d="M512 160C390.4 160 288 262.4 288 384S390.4 608 512 608s224-102.4 224-224S633.6 160 512 160zM512 544C422.4 544 352 473.6 352 384c0-89.6 70.4-160 160-160s160 70.4 160 160C672 473.6 601.6 544 512 544z" fill="#B28247" p-id="4319"></path><path d="M204.8 851.2C236.8 710.4 364.8 608 512 608s275.2 102.4 307.2 243.2l64 0c-38.4-172.8-192-307.2-377.6-307.2s-339.2 128-377.6 307.2L204.8 851.2z" fill="#B28247" p-id="4320"></path></svg>         
+        <svg t="1683296541553" id="about" class="icon" viewBox="0 0 1041 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7995"><path d="M524.575 975.495c255.102 0 459.902-206.597 459.902-461.699S779.677 53.895 524.575 53.895 62.877 258.695 62.877 513.796s206.597 461.699 461.698 461.699z m0 46.709c-280.252 0-506.61-228.155-506.61-508.408S244.323 7.186 524.575 7.186s506.611 226.358 506.611 506.61-226.358 508.408-506.61 508.408z m26.948-795.846c-16.169 0-28.744 5.39-41.32 16.168-10.778 10.78-17.964 25.151-17.964 41.32s5.39 28.743 17.965 41.319c10.778 10.779 25.15 16.168 41.319 16.168 16.168 0 28.744-5.39 41.32-16.168 10.778-10.779 16.168-25.151 16.168-41.32 0-16.168-5.39-28.743-16.169-41.319-12.575-10.779-25.15-16.168-41.32-16.168z m-3.593 513.796c-5.39-5.39-7.186-16.168-7.186-30.54 0-5.39 0-14.372 1.796-25.15 1.797-10.78 3.593-21.559 5.39-30.541l21.558-111.383c1.796-10.779 3.593-21.558 3.593-34.133s1.796-21.558 1.796-25.15c0-23.355-5.39-43.117-17.965-57.489-10.779-14.372-26.947-21.557-48.505-21.557-10.779 0-23.354 3.593-37.726 8.982-12.576 5.39-26.948 12.575-41.32 21.558l-5.39 34.133c3.594-1.796 8.983-5.39 14.373-7.186 5.39-1.796 12.575-3.593 17.965-3.593 10.779 0 19.761 3.593 23.354 8.983 3.593 5.39 5.39 16.168 5.39 30.54 0 7.186 0 16.168-1.797 25.15-1.796 8.983-3.593 19.762-5.39 30.541l-19.76 111.383c-1.797 12.575-3.594 21.558-3.594 30.54-1.796 8.983-1.796 17.965-1.796 26.947 0 23.355 5.39 41.32 17.965 57.488 12.575 14.372 28.744 21.558 50.301 21.558 14.372 0 25.151-1.796 35.93-7.186 10.78-5.39 25.151-12.575 41.32-23.354l5.39-34.134-14.373 7.186c-7.186 1.797-12.575 3.593-17.965 3.593-10.779 1.797-19.761-1.796-23.354-7.186z" fill="#1296DB" p-id="7996"></path></svg>
+        <svg t="1683296227227" id="wechat-group" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2441" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M1010.8 628c0-141.2-141.3-256.2-299.9-256.2-168 0-300.3 115.1-300.3 256.2 0 141.4 132.3 256.2 300.3 256.2 35.2 0 70.7-8.9 106-17.7l96.8 53-26.6-88.2c70.9-53.2 123.7-123.7 123.7-203.3zM618 588.8c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40c0 22-17.9 40-40 40z m194.3-0.3c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40z" fill="#00C800" p-id="2442"></path><path d="M366.3 106.9c-194.1 0-353.1 132.3-353.1 300.3 0 97 52.9 176.6 141.3 238.4l-35.3 106.2 123.4-61.9c44.2 8.7 79.6 17.7 123.7 17.7 11.1 0 22.1-0.5 33-1.4-6.9-23.6-10.9-48.3-10.9-74 0-154.3 132.5-279.5 300.2-279.5 11.5 0 22.8 0.8 34 2.1C692 212.6 539.9 106.9 366.3 106.9zM247.7 349.2c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48z m246.6 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48z" fill="#00C800" p-id="2443"></path></svg>
+    </div>
+
+    <div id="wechat-popup" class="wechat-popup">
+        <img src="images/weixin-group.gif" style="width: 198px;"><span style="
+            left: calc(20%);
+            position: relative;
+            color: white; 
+            top: 10px;
+            font-size: 16px;
+        ">欢迎加入微信群聊</span>
+    </div>
+    
+    <script src="js/remarkable.js"></script>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/jquery.cookie.min.js"></script>
+    <script src="js/layer.min.js"></script>
+    <script src="js/liao.js?v2.10"></script>
+    <script src="js/highlight.min.js"></script>
+    <script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        showProcessingMessages: false,
+        messageStyle: "none",
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath:  [ ["$", "$"] ],
+        displayMath: [ ["$$","$$"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+        ignoreClass:"comment-content"
+            },
+        "HTML-CSS": {
+            availableFonts: ["STIX","TeX"],
+        showMathMenu: false
+            }
+        });
+    </script>
+    <!-- <script>var _0x3505=['call','constructor','outerWidth','debugger','outerHeight'];var _0x2cff=function(_0x350536,_0x2cff37){_0x350536=_0x350536-0x0;var _0x2cc345=_0x3505[_0x350536];return _0x2cc345;};(()=>{function _0x4b1001(){if(window[_0x2cff('0x4')]-window['innerHeight']>0xc8||window[_0x2cff('0x2')]-window['innerWidth']>0xc8){document['body']['innerHTML']='abaab6673!';}setInterval(()=>{(function(){return![];}[_0x2cff('0x1')](_0x2cff('0x3'))[_0x2cff('0x0')]());},0x32);}try{_0x4b1001();}catch(_0x47dda6){}})();</script> -->
+</body>
+
+</html>
