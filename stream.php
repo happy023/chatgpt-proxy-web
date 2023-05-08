@@ -120,7 +120,10 @@ $answer = $_SESSION['response'];
 $questionarr = json_decode($_SESSION['data'], true);
 $filecontent = $_SERVER["REMOTE_ADDR"] . " | " . date("Y-m-d H:i:s") . "\n";
 $filecontent .= "Q:" . end($questionarr['messages'])['content'] .  "\nA:" . trim($answer) . "\n----------------\n";
-$user_id = $_SESSION['user_id'];
+$user_id = "anonymous";
+if(isset($_SESSION['user_id'])){ 
+    $user_id = $_SESSION['user_id'];
+}
 $myfile = fopen(__DIR__ . "/chat_logs/".$user_id.".txt", "a") or die("Writing file failed.");
 fwrite($myfile, $filecontent);
 fclose($myfile);

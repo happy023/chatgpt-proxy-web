@@ -467,6 +467,12 @@ function initPreset() {
 initPreset();
 
 function checkLogin(){
+    var userAgent = navigator.userAgent;
+    if (/Mobile|Android|iPhone|iPad|Windows Phone/.test(userAgent)) {
+        // 访问网页的是手机,不校验
+        return;
+    }
+    // 访问网页的是电脑，需要校验
     $.ajax({
         cache: true,
         type: "POST",
