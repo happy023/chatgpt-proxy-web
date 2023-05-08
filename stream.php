@@ -2,19 +2,32 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: text/event-stream");
 header("X-Accel-Buffering: no");
+
+$config_values = parse_ini_file("okcode-config.ini");
+
+$logfile = $config_values["log_path"]; 
+if(empty($logfile)){
+    $logfile = "/server_logs/ai_response.log"; 
+}
+
 session_start();
 $postData = $_SESSION['data'];
 $_SESSION['response'] = "";
-$ch = curl_init();
-$OPENAI_API_KEY = "sk-KEY";
+
+$apiKey = $config_values["apiKey"];
+$organization = $config_values["organization"];
+
+error_log("0 - openai - key:". $apiKey .";org:".$organization."\n", 3, $logfile);
+
 if (isset($_SESSION['key'])) {
-    $OPENAI_API_KEY = $_SESSION['key'];
+    $apiKey = $_SESSION['key'];
 }
+
 $headers  = [
     'Accept: application/json',
     'Content-Type: application/json',
-    'Authorization: Bearer ' . $OPENAI_API_KEY,
-    "OpenAI-Organization: org-XXX"
+    'Authorization: Bearer ' . $apiKey,
+    'OpenAI-Organization: ' . $organization
 ];
 
 setcookie("errcode", ""); //EventSource无法获取错误信息，通过cookie传递
@@ -91,6 +104,7 @@ $callback = function ($ch, $data) {
     return strlen($data);
 };
 
+$ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
 curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
