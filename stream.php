@@ -13,7 +13,8 @@ if (isset($_SESSION['key'])) {
 $headers  = [
     'Accept: application/json',
     'Content-Type: application/json',
-    'Authorization: Bearer ' . $OPENAI_API_KEY
+    'Authorization: Bearer ' . $OPENAI_API_KEY,
+    "OpenAI-Organization: org-XXX"
 ];
 
 setcookie("errcode", ""); //EventSource无法获取错误信息，通过cookie传递
