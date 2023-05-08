@@ -17,8 +17,6 @@ $_SESSION['response'] = "";
 $apiKey = $config_values["apiKey"];
 $organization = $config_values["organization"];
 
-error_log("0 - openai - key:". $apiKey .";org:".$organization."\n", 3, $logfile);
-
 if (isset($_SESSION['key'])) {
     $apiKey = $_SESSION['key'];
 }
