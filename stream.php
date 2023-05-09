@@ -54,8 +54,7 @@ $callback = function ($ch, $data) {
             setcookie("errcode", "model_overloaded");
         }
     } else {
-        $logfile = "/www/wwwroot/bot.okcode.cn/server_logs/ai_response.log"; 
-            error_log("data - ". $data."\n", 3, $logfile);
+        error_log("data - ". $data."\n", 3, $logfile);
         
         $answer = "";
         $done = false;

@@ -482,7 +482,7 @@ function checkLogin(){
             if(!result.success){
                 showqrcode();
             }else{
-                var popup = document.getElementById('login-wx');
+                let popup = document.getElementById('login-wx');
                 popup.style.display = "none";
                 let userId = document.getElementById('user-id');
                 userId.innerText = result.user_id + '已登录';
@@ -492,7 +492,7 @@ function checkLogin(){
 }
 
 function showqrcode(){ 
-    var loading = layer.msg('正准备登录...', {
+    let loading = layer.msg('正准备登录...', {
         icon: 16,
         shade: 0.4,
         time: false //取消自动关闭
@@ -502,7 +502,7 @@ function showqrcode(){
         url: "/weixin/createqrcode_div.php",
         success: function (result) {
             layer.close(loading);
-            var wxImg = document.getElementById('login-wx');
+            let wxImg = document.getElementById('login-wx');
             wxImg.style.display = "flex"; 
             wxImg.innerHTML = result;
             timeOut = 0;
@@ -560,8 +560,8 @@ function expires(){
 }
 
 function initRightPanelClickHandler(){
-    var icons = document.querySelectorAll('.sidebar .icon');
-    for (var i = 0; i < icons.length; i++) {
+    let icons = document.querySelectorAll('.sidebar .icon');
+    for (let i = 0; i < icons.length; i++) {
         icons[i].addEventListener('click', function(e) {
             switch(e.currentTarget.id){
                 case 'personal':
@@ -584,8 +584,8 @@ function initRightPanelClickHandler(){
     
     initRightPanelClickHandler();
 
-    var wechatIcon = document.getElementById('wechat-group');
-    var popup = document.getElementById('wechat-popup');
+    let wechatIcon = document.getElementById('wechat-group');
+    let popup = document.getElementById('wechat-popup');
     wechatIcon.addEventListener('mouseover', function () {
         popup.style.display = 'block';
     });
@@ -593,4 +593,10 @@ function initRightPanelClickHandler(){
         popup.style.display = 'none';
     });  
 
+    if(isMobile()){
+        let sidebar = document.getElementById('sidebar');
+        sidebar.style.display = 'none';
+        let header = document.getElementById('layout-header');
+        header.style.display = 'none';
+    }
 })();

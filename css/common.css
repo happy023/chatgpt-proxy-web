@@ -1633,7 +1633,14 @@ a.unlinks-deco {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    width: 95%;
+    /* width: 95%; */
+    width: calc(100% - 60px);
+}
+
+@media (max-width:480px) {
+    .container {
+        width: 99%;
+    }
 }
 
 
@@ -1859,7 +1866,7 @@ a.unlinks-deco {
     top: 19%;
     right: 0;
     transform: translateY(-50%);
-    width: 38px;
+    width: 33px;
     background-color: transparent;
  }
 
