@@ -16,6 +16,7 @@ $_SESSION['response'] = "";
 
 $apiKey = $config_values["apiKey"];
 $organization = $config_values["organization"];
+$chunk_size = $config_values["chunk_size"];
 
 if (isset($_SESSION['key'])) {
     $apiKey = $_SESSION['key'];
@@ -85,7 +86,6 @@ $callback = function ($ch, $data) {
         } 
         $curr_size += strlen($answer);
         //这里是缓存字数
-        $chunk_size = 1;
         if($curr_size>=$chunk_size){
             error_log("开始推送 - ". $curr_size."-".$chunk_size."\n", 3, $logfile);
             $curr_size = 0;
