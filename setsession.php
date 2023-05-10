@@ -18,12 +18,14 @@ $postData = [
     "messages" => [],
 ];
 if (!empty($context)) {
+    //附上历史对话，chatgpt自身没有记忆功能
     $context = array_slice($context, -5);
     foreach ($context as $message) {
         $postData['messages'][] = ['role' => 'user', 'content' => str_replace("\n", "\\n", $message[0])];
         $postData['messages'][] = ['role' => 'assistant', 'content' => str_replace("\n", "\\n", $message[1])];
     }
 }
+$postData['messages'][] = ['role'=> 'system','content'=>"You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown."];
 $postData['messages'][] = ['role' => 'user', 'content' => $_POST['message']];
 $postData = json_encode($postData);
 $_SESSION['data'] = $postData;
