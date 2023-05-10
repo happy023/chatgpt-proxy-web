@@ -54,9 +54,7 @@ $callback = function ($ch, $data) {
         if (strpos($complete->error->message, "That model is currently overloaded") === 0) { //OpenAI服务器超负荷
             setcookie("errcode", "model_overloaded");
         }
-    } else {
-        error_log("data - ". $data."\n", 3, $logfile);
-        
+    } else {        
         $answer = "";
         $done = false;
         //移除前面的“data: ”
@@ -86,8 +84,8 @@ $callback = function ($ch, $data) {
         } 
         $curr_size += strlen($answer);
         //这里是缓存字数
+        $chunk_size = 5;
         if($curr_size>=$chunk_size){
-            error_log("开始推送 - ". $curr_size."-".$chunk_size."\n", 3, $logfile);
             $curr_size = 0;
             ob_flush();
             flush();
