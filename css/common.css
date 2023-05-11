@@ -1066,7 +1066,8 @@ a.unlinks-deco {
 
 .layout-bar {
     font-size: 14px;
-    color: var(--zhuluan-black-80-color)
+    color: var(--zhuluan-black-80-color);
+    padding-top: 5px;
 }
 
 .layout-bar .num span {
@@ -1108,13 +1109,6 @@ a.unlinks-deco {
 .layout-bar .btn .iconfont.icon-text-add {
     margin-right: 5px;
     font-size: 17px;
-}
-
-.layout-bar .bright-btn {
-    color: var(--zhuluan-white-color);
-    /* background-color: var(--zhuluan-primary-color); */
-    /* background: linear-gradient(90deg, var(--zhuluan-primary-color), var(--zhuluan-primary-color-hover)); */
-    box-shadow: 0 4px 8px 0 var(--zhuluan-shadow-color);
 }
 
 .precast-block {

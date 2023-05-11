@@ -52,3 +52,8 @@ li.article-content {
 #kw-target-box #kw-target {
     color: #fff;
 }
+
+.layout-bar .bright-btn {
+    color: var(--zhuluan-white-color);
+    box-shadow: 0 4px 8px 0 var(--zhuluan-shadow-color);
+}
