@@ -1599,6 +1599,15 @@ a.unlinks-deco {
     width: 24px;
     height: 24px;
     fill: #333;
+    cursor: pointer;
+}
+
+.sidebar #theme-switcher-light{
+    display: block;
+}
+
+.sidebar #theme-switcher-dark{
+    display: none;
 }
 
 .wechat-popup {

@@ -573,6 +573,12 @@ function initRightPanelClickHandler(){
                 case 'wechat-group':
                     
                     break;
+                case 'theme-switcher-dark':
+                    toggleStyles();
+                    break;
+                case 'theme-switcher-light':
+                    toggleStyles();
+                    break;
             }
         });
     }
@@ -581,13 +587,20 @@ function initRightPanelClickHandler(){
 function toggleStyles() {
     var light = document.getElementsByClassName('style-light')[0];
     var dark = document.getElementsByClassName('style-dark')[0];
+
+    let darkBtn = document.getElementById('theme-switcher-dark');
+    let lightBtn = document.getElementById('theme-switcher-light');
     
     if (light.disabled) {
         light.disabled = false;
         dark.disabled = true;
+        darkBtn.style.display = 'block';
+        lightBtn.style.display = 'none';
     } else {
         light.disabled = true;
         dark.disabled = false;
+        darkBtn.style.display = 'none';
+        lightBtn.style.display = 'block';
     }
 }  
 
