@@ -46,7 +46,6 @@ th {
 }
 
 a {
-    color: #5e72e4;
     font-weight: 300;
     text-decoration: none;
 }
@@ -874,8 +873,6 @@ body {
 }
 
 .preset-select {
-    background-color: #202123;
-    color: darkgray; 
     overflow-y: scroll;
 }
 
@@ -907,10 +904,6 @@ body {
 .icon-wuguan:before {
     content: "\ec5f";
 } 
-
-.icon-wenda:before {
-    content: "\e60e";
-}     
 
 .switch:checked~label:after {
     opacity: 1;
@@ -1069,8 +1062,6 @@ a.unlinks-deco {
 
 .layout-content {
     padding: 22px 0 50px;
-    /* background-color: #343541; */
-    background-color: #202123;
 }
 
 .layout-bar {

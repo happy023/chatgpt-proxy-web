@@ -3,7 +3,6 @@
     text-decoration: none; 
 }
 .logo-about {
-    color: gray;
     text-decoration: none;
     font-size: x-small;
 }
@@ -17,10 +16,6 @@
     text-decoration: none;
 }
 
-.layout-header {
-    background: #202123;
-}
-
 .layout-header .nav .list .links {
     color: #fff;
 }
@@ -30,7 +25,6 @@
     overflow-y: auto;
     border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
-    border-color: #353333;
 }
 
 #article-wrapper::-webkit-scrollbar {

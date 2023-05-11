@@ -1,0 +1,54 @@
+.layout-content {
+    background-color: #202123;
+}
+
+.layout-header {
+    background: #202123;
+}
+
+.logo-title {
+    color: white;
+}
+
+#user-id {
+    color: white;
+}
+
+.logo-about {
+    color: gray;
+}
+
+.logo-about .links {
+    color: rgb(236, 230, 230);
+}
+
+.preset-select {
+    background-color: #202123;
+    color: darkgray;
+    border-color: black;
+}
+
+.precast-block {
+    border-color: #353333;
+}
+
+#fixed-block {
+    background-color: #40414F;
+}
+
+#article-wrapper {
+    border-color: #353333;
+}
+
+li.article-title {
+    background: #343541;
+    color: #fff;
+}
+
+li.article-content {
+    background: #434654;
+    color: #fff;
+}
+#kw-target-box #kw-target {
+    color: #fff;
+}

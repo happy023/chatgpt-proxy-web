@@ -578,6 +578,19 @@ function initRightPanelClickHandler(){
     }
 }
 
+function toggleStyles() {
+    var light = document.getElementsByClassName('style-light')[0];
+    var dark = document.getElementsByClassName('style-dark')[0];
+    
+    if (light.disabled) {
+        light.disabled = false;
+        dark.disabled = true;
+    } else {
+        light.disabled = true;
+        dark.disabled = false;
+    }
+}  
+
 (function(){
 
     checkLogin();
