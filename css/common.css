@@ -874,6 +874,11 @@ body {
 
 .preset-select {
     overflow-y: scroll;
+    width:calc(100% - 90px);
+    max-width:200px; 
+    border-radius: 5px;
+    height: 25px;
+    margin-left: 10px;
 }
 
 .preset-select::-webkit-scrollbar {
@@ -1129,10 +1134,6 @@ a.unlinks-deco {
     padding-top: 10px;
 }
 
-#kw-box {
-    margin-right: 20px;
-}
-
 .kw-btn.btn {
     line-height: 100%;
     color: var(--zhuluan-primary-color);
@@ -1164,20 +1165,6 @@ a.unlinks-deco {
 
 #kw-target::-webkit-input-placeholder {
     color: var(--zhuluan-custom-b8-color)
-}
-
-#kw-tags {
-    border-top: none;
-    height: 28px;
-    margin-bottom: -6px;
-}
-
-#kw-tags #tags-clear-all {
-    margin-left: 10px;
-}
-
-#kw-box {
-    margin-bottom: -8px;
 }
 
 #kw-list {
@@ -1283,41 +1270,6 @@ a.unlinks-deco {
     border-bottom: 1px solid var(--zhuluan-border-color) !important;
 }
 
-#think-kw {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    border-top: 1px solid var(--zhuluan-border-color);
-    background-color: var(--zhuluan-white-color);
-    box-shadow: 0 3px 5px rgba(30, 30, 30, .02)
-}
-
-#think-kw .list {
-    padding: 12px 10px;
-    line-height: 100%;
-    border-bottom: 1px solid var(--zhuluan-border-rgba-4);
-    transition: all .4s;
-    cursor: pointer;
-}
-
-#think-kw .list:hover,
-#think-kw .list.pitch {
-    background-color: var(--zhuluan-warning-rgba-10)
-}
-
-#think-kw .list:last-child {
-    border: none
-}
-
-#think-kw .list .text span {
-    color: var(--zhuluan-warning-color)
-}
-
-#think-kw .list .num {
-    color: var(--zhuluan-black-80-color)
-}
-
 .locked-kw {
     position: relative;
     border: 1px solid var(--zhuluan-border-color);
@@ -1368,44 +1320,6 @@ a.unlinks-deco {
     padding: 8px 0
 }
 
-.footer {
-    padding-bottom: 15px
-}
-
-.footer p {
-    text-align: center;
-    margin-bottom: 8px
-}
-
-.footer p,
-.footer .links {
-    color: var(--zhuluan-black-80-color)
-}
-
-.footer .foot-menu {
-    font-size: 16px
-}
-
-.footer .links {
-    margin: 0 6px;
-    word-break: keep-all;
-    transition: all .4s
-}
-
-.footer .links:hover {
-    color: var(--zhuluan-black-3-color)
-}
-
-.zhuluan-cms {
-    border-bottom: none;
-    border-top: none
-}
-
-.zhuluan-cms img {
-    width: 30%;
-    vertical-align: top
-}
-
 
 .switch-bar .tips {
     margin-left: 10px;
@@ -1427,13 +1341,6 @@ a.unlinks-deco {
 }
 
 
-@media (max-width:1444px) and (min-width:993px) {
-
-    .relevance .list dd p {
-        padding: 8px 15px;
-    }
-}
-
 @media (max-width:992px) {
     .layout-header {
         position: relative;
@@ -1445,24 +1352,6 @@ a.unlinks-deco {
 
     .layout-header .icon-menu {
         display: block
-    }
-
-    .header-nav .nav {
-        display: none;
-    }
-
-    .header-nav.open-menu .nav {
-        display: block;
-        position: absolute;
-        z-index: 10008;
-        left: 0;
-        right: 0;
-        top: 60px;
-        width: 100%;
-        padding: 15px 0 25px;
-        border-top: 1px solid var(--zhuluan-custom-d8-color);
-        background-color: var(--zhuluan-white-color);
-        box-shadow: 0 6px 6px rgba(30, 30, 30, .06)
     }
 
     .layout-header .nav .list {
@@ -1500,47 +1389,10 @@ a.unlinks-deco {
         margin-bottom: 12px
     } 
 
-    .banner {
-        display: block;
-        padding-top: 0;
-        height: 400px;
-    }
-
-    .banner .images {
-        width: 300px;
-        height: 200px;
-        margin: 0 auto
-    }
-
-    .banner h2,
-    .title h2 {
-        font-size: 24px
-    }
-
-    .banner .title {
-        padding-left: 25px;
-    }
-
-    .relevance .list {
-        width: calc(49.999999% - 22px)
-    }
-
-    .relevance .list dd p {
-        padding: 4px 5px;
-    }
-
-    .zhuluan-cms img {
-        width: 80%;
-    }
-
     #kw-tags {
         height: auto;
     }
-
-    #kw-box {
-        margin-bottom: 4px;
-    }
-
+    
     .article-box {
         margin: 0 -10px;
     }
@@ -1557,6 +1409,7 @@ a.unlinks-deco {
     transition: all .4s;
     color: var(--zhuluan-black-3-color);
     background: linear-gradient(90deg, var(--zhuluan-custom-e8-color), var(--zhuluan-custom-d8-color));
+    border: none;
 }
 
 #login-wx {
@@ -1582,7 +1435,7 @@ a.unlinks-deco {
     position: fixed;
     top: 19%;
     right: 0;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     width: 33px;
     background-color: transparent;
  }
@@ -1606,12 +1459,11 @@ a.unlinks-deco {
 
 .wechat-popup {
     position: fixed;
-    right: 28px;
-    top: 23%;
-    transform: translateY(10%);
+    right: 42px;
+    top: 35%; 
     border-radius: 8px 0px 0px 8px;
     width: 200px;
     height: 200px;
     border: none;
-    display: none; 
+    display: none;
 }
