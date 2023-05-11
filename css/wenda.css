@@ -50,13 +50,6 @@
     border-radius:5px;
 }
 
-#kw-target-box {
-    border-radius: var(--zhuluan-primary-border-radius);
-    -webkit-border-radius: var(--zhuluan-primary-border-radius);
-    -moz-border-radius: var(--zhuluan-primary-border-radius);
-    -ms-border-radius: var(--zhuluan-primary-border-radius);
-    -o-border-radius: var(--zhuluan-primary-border-radius);
-}
 
 li.article-title {
     background: #343541;
@@ -135,7 +128,7 @@ label::after {
     content: '';
     width: 0;
     height: 100%;
-    background: #202123;
+    background: var(--zhuluan-dark-color);
     transition: all .3s;
     border-radius: 10px;
 }

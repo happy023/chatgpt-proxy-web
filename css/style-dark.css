@@ -1,9 +1,9 @@
 .layout-content {
-    background-color: #202123;
+    background-color: var(--zhuluan-dark-color);
 }
 
 .layout-header {
-    background: #202123;
+    background: var(--zhuluan-dark-color);
 }
 
 .logo-title {
@@ -23,13 +23,13 @@
 }
 
 .preset-select {
-    background-color: #202123;
+    background-color: var(--zhuluan-dark-color);
     color: darkgray;
     border-color: #353333;
 }
 
 .precast-block {
-    border-color: #353333;
+    border-color: var(--zhuluan-dark-color);
 }
 
 #fixed-block {

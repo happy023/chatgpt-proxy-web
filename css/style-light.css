@@ -1,9 +1,9 @@
 .layout-content {
-    background-color: rgba(247,247,248,1);
+    background-color: white;
 }
 
 .layout-header {
-    background: rgba(247,247,248,1);
+    background: white;
 }
 
 .logo-title {
@@ -15,7 +15,7 @@
 }
 
 .logo-about {
-    color: black;
+    color: darkgray;
 }
 
 .logo-about .links {
@@ -29,11 +29,11 @@
 }
 
 .precast-block {
-    border-color: #dfd9d9;
+    border-color: #dcd3d3;
 }
 
 #fixed-block {
-    background-color: #fff;
+    background-color: white;
 }
 
 #article-wrapper {
@@ -46,7 +46,7 @@ li.article-title {
 }
 
 li.article-content {
-    background: #fff;
+    background: #d8d8dc;
     color: #1c2127;
 }
 #kw-target-box #kw-target {
