@@ -1,3 +1,7 @@
+body {
+    background-color: var(--zhuluan-dark-color)
+}
+
 .layout-content {
     background-color: var(--zhuluan-dark-color);
 }
@@ -49,6 +53,7 @@ li.article-content {
     background: #434654;
     color: #fff;
 }
+
 #kw-target-box #kw-target {
     color: #fff;
 }
@@ -56,4 +61,13 @@ li.article-content {
 .layout-bar .bright-btn {
     color: var(--zhuluan-white-color);
     box-shadow: 0 4px 8px 0 var(--zhuluan-shadow-color);
+}
+
+.article-box-header {
+    border-color: #353333;
+}
+
+.talk-history{
+    border-color: #353333;
+    color: white;
 }

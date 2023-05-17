@@ -1,3 +1,7 @@
+body {
+    /* background-color: var(--zhuluan--color) */
+}
+
 .layout-content {
     background-color: white;
 }
@@ -56,4 +60,13 @@ li.article-content {
 .layout-bar .bright-btn {
     color: var(--zhuluan-black-3-color);
     box-shadow: 0 4px 8px 0 var(--zhuluan-shadow-color);
+}
+
+.article-box-header {
+    border-color: #dcd3d3;
+}
+
+.talk-history{
+    border-color: #dcd3d3;
+    color: black;
 }

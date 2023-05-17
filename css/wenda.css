@@ -20,6 +20,17 @@
     color: #fff;
 }
 
+.talk-history{
+    flex: 1;
+    margin: 10px 10px 0px 0px;
+    border: 1px solid;
+    border-radius: var(--zhuluan-primary-border-radius);
+}
+
+.talk-history p{
+    margin: 10px;
+}
+
 #article-wrapper {
     height: calc(100vh - 178px);
     overflow-y: auto;
@@ -37,7 +48,6 @@
 }
 
 .article-box {
-    min-height: calc(100vh - 50px) !important;
     position: relative;
     display: flex;
     flex-direction: column;
