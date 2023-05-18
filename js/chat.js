@@ -363,7 +363,6 @@ $(document).ready(function () {
             }
         }
 
-
         $.ajax({
             cache: true,
             type: "POST",
@@ -377,7 +376,9 @@ $(document).ready(function () {
             success: function (result) {
                 if (!result.success) {
                     layer.close(loading);
-                    // showqrcode();
+                    if(result.msg){
+                        layer.msg(result.msg);
+                    }
                 } else {
                     var popup = document.getElementById('login-wx');
                     popup.style.display = "none";
@@ -385,8 +386,6 @@ $(document).ready(function () {
                 }
             }
         });
-
-
     }
 
     function randomString(len) {
