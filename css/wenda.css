@@ -28,10 +28,55 @@
     border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
     padding-top: 20px;
+    /* height: calc(100vh - 60px); */
+    overflow-y: auto;
 }
 
-.talk-history p {
-    margin: 10px;
+@media (max-width:480px) {
+    .talk-history {
+        display:none;
+    }
+}
+@media (min-width:480px) {
+    .talk-history {
+        min-width: 250px;
+        display:'';
+    }
+}
+
+.talk-history-item {
+    color: white;
+    margin: 10px 15px 10px 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    height: 50px;
+    background-color: #4c4949;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.talk-history-item-selected {
+    background-color: #8f8282;
+}
+
+.talk-history-time {
+    display: flex;
+    font-size: 10px;
+    align-items: right;
+    color: darkgray;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.talk-history-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
 }
 
 #article-wrapper {
@@ -152,15 +197,4 @@ input:checked+label::before {
 
 input:checked+label::after {
     width: 100%;
-}
-
-.talk-history-item {
-    color: white;
-    margin: 8px 20px 8px 20px;
-    border-radius: 10px;
-    height: 50px;
-    background-color: #4c4949;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
