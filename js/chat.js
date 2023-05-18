@@ -117,6 +117,60 @@ function autoresize() {
     $("#article-wrapper").height(parseInt($(window).height()) - parseInt($("#fixed-block").height()) - parseInt($(".layout-header").height()) - 80);
 }
 
+function initEvents() {
+    let icons = document.querySelectorAll('.sidebar .icon');
+    for (let i = 0; i < icons.length; i++) {
+        icons[i].addEventListener('click', function (e) {
+            switch (e.currentTarget.id) {
+                case 'personal':
+
+                    break;
+                case 'about':
+
+                    break;
+                case 'wechat-group':
+
+                    break;
+                case 'theme-switcher-dark':
+                    toggleStyles();
+                    break;
+                case 'theme-switcher-light':
+                    toggleStyles();
+                    break;
+            }
+        });
+    }
+    //初始化二维码弹出事件
+    let wechatIcon = document.getElementById('wechat-group');
+    let popup = document.getElementById('wechat-popup');
+    wechatIcon.addEventListener('mouseover', function () {
+        popup.style.display = 'block';
+    });
+    wechatIcon.addEventListener('mouseleave', function () {
+        popup.style.display = 'none';
+    });
+}
+
+function toggleStyles() {
+    var light = document.getElementsByClassName('style-light')[0];
+    var dark = document.getElementsByClassName('style-dark')[0];
+
+    let darkBtn = document.getElementById('theme-switcher-dark');
+    let lightBtn = document.getElementById('theme-switcher-light');
+
+    if (light.disabled) {
+        light.disabled = false;
+        dark.disabled = true;
+        darkBtn.style.display = 'block';
+        lightBtn.style.display = 'none';
+    } else {
+        light.disabled = true;
+        dark.disabled = false;
+        darkBtn.style.display = 'none';
+        lightBtn.style.display = 'block';
+    }
+}
+
 $(document).ready(function () {
     let running = false;
     initcode();
@@ -273,8 +327,8 @@ $(document).ready(function () {
                             $(this).html("<button onclick='copycode(this);' class='codebutton'>复制</button>" + $(this).html());
                         });
                         document.getElementById("article-wrapper").scrollTop = 100000;
-                        
-                        if(running){
+
+                        if (running) {
                             setTimeout(interval, intervalTime);
                         }
                     };
@@ -283,14 +337,14 @@ $(document).ready(function () {
                 }
                 if (event.data == "[DONE]") {
                     isalltext = true;
-                    
-                    console.log('<<---',alltext);
+
+                    console.log('<<---', alltext);
                     contextarray.push([prompt, alltext]);
                     contextarray = contextarray.slice(-5); //只保留最近5次对话作为上下文，以免超过最大tokens限制
                     es.close();
                     return;
                 }
-                if(event.data.startsWith('{')){
+                if (event.data.startsWith('{')) {
                     var json = eval("(" + event.data + ")");
                     if (json.choices[0].delta.hasOwnProperty("content")) {
                         if (alltext == "") {
@@ -299,7 +353,7 @@ $(document).ready(function () {
                             alltext += json.choices[0].delta.content;
                         }
                     }
-                }else{
+                } else {
                     if (alltext == "") {
                         alltext = event.data.replaceAll('\\n', '\n'); //去掉回复消息中偶尔开头就存在的连续换行符
                     } else {
@@ -321,10 +375,10 @@ $(document).ready(function () {
             },
             dataType: "json",
             success: function (result) {
-                if(!result.success){
+                if (!result.success) {
                     layer.close(loading);
-                    showqrcode();
-                }else{
+                    // showqrcode();
+                } else {
                     var popup = document.getElementById('login-wx');
                     popup.style.display = "none";
                     streaming();
@@ -346,165 +400,13 @@ $(document).ready(function () {
         return pwd;
     }
 
-});
 
-function checkLogin(){
-    var userAgent = navigator.userAgent;
-    if (/Mobile|Android|iPhone|iPad|Windows Phone/.test(userAgent)) {
-        // 访问网页的是手机,不校验
-        return;
-    }
-    // 访问网页的是电脑，需要校验
-    $.ajax({
-        cache: true,
-        type: "POST",
-        url: "/weixin/checklogin.php",
-        dataType: "json",
-        success: function (result) {
-            if(!result.success){
-                showqrcode();
-            }else{
-                let popup = document.getElementById('login-wx');
-                popup.style.display = "none";
-                let userId = document.getElementById('user-id');
-                userId.innerText = result.user_id + '已登录';
-            }
-        }
-    });
-}
+    initEvents();
 
-function showqrcode(){ 
-    let loading = layer.msg('正准备登录...', {
-        icon: 16,
-        shade: 0.4,
-        time: false //取消自动关闭
-    });
-    $.ajax({ 
-        type: "POST",
-        url: "/weixin/createqrcode_div.php",
-        success: function (result) {
-            layer.close(loading);
-            let wxImg = document.getElementById('login-wx');
-            wxImg.style.display = "flex"; 
-            wxImg.innerHTML = result;
-            timeOut = 0;
-            setInterval(checkStatus, 1000);
-        }
-    });
-}
-
-// 从0秒开始轮询
-let timeOut = 0;
-let checklogin;
-
-// 查询扫码状态
-function checkStatus() {
-    // 获取scene
-    var sc = $('#sc').val();
-    $.ajax({
-        type: "POST",
-        url: "/weixin/getstatus.php?scene="+sc,
-        success:function(data){
-            // code==200即授权登录成功
-            if (data.code == 200) {
-                console.log(data.msg)
-                $('#lgtext').html('<span style="color:#07c160;">'+data.msg+'</span>')
-                $('#xcxqrcode').css('filter','blur(5px)')
-                clearTimeout(checklogin);
-                location.href = '/';
-            }else{
-                console.log(data.msg)
-                if(data.code == 201){
-                    $('#lgtext').html('<span>'+data.msg+'</span>')
-                }else if(data.code == 202){
-                    $('#lgtext').html('<span style="color:#07c160;">'+data.msg+'</span>')
-                }
-            }
-            expires();
-        },
-        error:function(data) {
-          console.log('服务器发生错误')
-          $('#lgtext').text('服务器发生错误')
-        }
-    });
-}
-
-// 小程序码过期检测
-function expires(){
-    timeOut += 1;
-    // 60秒后过期
-    if(timeOut >= 60){
-        // 过期后停止轮询
-        clearTimeout(checklogin);
-        $('#lgtext').text('已过期，请刷新页面')
-        $('#xcxqrcode').css('filter','blur(5px)')
-    }
-}
-
-function initRightPanelClickHandler(){
-    let icons = document.querySelectorAll('.sidebar .icon');
-    for (let i = 0; i < icons.length; i++) {
-        icons[i].addEventListener('click', function(e) {
-            switch(e.currentTarget.id){
-                case 'personal':
-                    
-                    break;
-                case 'about':
-                    
-                    break;
-                case 'wechat-group':
-                    
-                    break;
-                case 'theme-switcher-dark':
-                    toggleStyles();
-                    break;
-                case 'theme-switcher-light':
-                    toggleStyles();
-                    break;
-            }
-        });
-    }
-}
-
-function toggleStyles() {
-    var light = document.getElementsByClassName('style-light')[0];
-    var dark = document.getElementsByClassName('style-dark')[0];
-
-    let darkBtn = document.getElementById('theme-switcher-dark');
-    let lightBtn = document.getElementById('theme-switcher-light');
-    
-    if (light.disabled) {
-        light.disabled = false;
-        dark.disabled = true;
-        darkBtn.style.display = 'block';
-        lightBtn.style.display = 'none';
-    } else {
-        light.disabled = true;
-        dark.disabled = false;
-        darkBtn.style.display = 'none';
-        lightBtn.style.display = 'block';
-    }
-}  
-
-(function(){
-
-    checkLogin();
-    
-    initRightPanelClickHandler();
-
-    let wechatIcon = document.getElementById('wechat-group');
-    let popup = document.getElementById('wechat-popup');
-    wechatIcon.addEventListener('mouseover', function () {
-        popup.style.display = 'block';
-    });
-    wechatIcon.addEventListener('mouseleave', function () {
-        popup.style.display = 'none';
-    });  
-
-    if(isMobile()){
+    if (isMobile()) {
         let sidebar = document.getElementById('sidebar');
         sidebar.style.display = 'none';
         let header = document.getElementById('layout-header');
         header.style.display = 'none';
     }
-})();
+});
