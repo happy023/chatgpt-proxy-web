@@ -69,5 +69,5 @@ li.article-content {
 }
 
 input:checked+label::after { 
-    background-color: rgb(201 183 133);
+    background-color: #dddfe2;
 }
