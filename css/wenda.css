@@ -25,6 +25,7 @@
     border-radius: var(--zhuluan-primary-border-radius);
     padding-top: 20px;
     overflow-y: auto;
+    box-shadow: var(--zhuluan-shadow);
 }
 
 @media (max-width:480px) {
@@ -79,6 +80,7 @@
     overflow-y: auto;
     border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
+    box-shadow: var(--zhuluan-shadow);
 }
 
 #article-wrapper::-webkit-scrollbar {
