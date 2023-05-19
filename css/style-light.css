@@ -1,9 +1,5 @@
-.layout-content {
-    background-color: white;
-}
-
-.layout-header {
-    background: white;
+body{
+    background-color: #f5f4f4;
 }
 
 .logo-title {
@@ -30,14 +26,12 @@
 
 .precast-block {
     border-color: #dcd3d3;
-}
-
-#fixed-block {
     background-color: white;
 }
 
 #article-wrapper {
     border-color: #dcd3d3;
+    background-color: white;
 }
 
 li.article-title {
@@ -49,7 +43,12 @@ li.article-content {
     background: #d8d8dc;
     color: #1c2127;
 }
-#kw-target-box #kw-target {
+
+.precast-block{
+    background-color: white;
+}
+
+.precast-block #kw-target {
     color: black;
 }
 
@@ -60,9 +59,11 @@ li.article-content {
 
 .article-box-header {
     border-color: #dcd3d3;
+    background-color: white;
 }
 
 .talk-history{
     border-color: #dcd3d3;
     color: black;
+    background-color: #e7f8ff;
 }

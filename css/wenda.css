@@ -18,17 +18,12 @@
     text-decoration: none;
 }
 
-.layout-header .nav .list .links {
-    color: #fff;
-}
-
 .talk-history {
     flex: 1;
     margin: 10px 10px 0px 0px;
     border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
     padding-top: 20px;
-    /* height: calc(100vh - 60px); */
     overflow-y: auto;
 }
 
@@ -103,7 +98,6 @@
 }
 
 #fixed-block {
-    background-color: #40414F;
     bottom: 20px;
     border-radius: 5px;
 }

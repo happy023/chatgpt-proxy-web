@@ -236,10 +236,6 @@ textarea:focus {
     outline: none;
 }
 
-#fixed-block {
-    height: auto;
-}
-
 [type="checkbox"],
 [type="radio"] {
     box-sizing: border-box;
@@ -360,6 +356,8 @@ html {
     --zhuluan-primary-border-radius: 5px;
 
     --zhuluan-dark-color: #202123;
+
+    --zhuluan-shadow: 50px 50px 100px 10px rgba(0, 0, 0, .1)
 }
 
 @font-face {
@@ -442,10 +440,11 @@ a.unlinks-deco {
 }
 
 .layout-header {
+    margin-left: 10px;
+    margin-right: 10px;
     height: 40px;
     display: flex;
     align-items: center;
-    background-color: var(--zhuluan-white-color)
 }
 
 .layout-header h2 {
@@ -471,25 +470,8 @@ a.unlinks-deco {
     height: 100%;
 }
 
-.layout-header .nav .list {
-    font-size: 16px;
-    font-weight: 600;
-    margin-left: 32px;
-}
-
-.layout-header .nav .list .links {
-    color: var(--zhuluan-black-6-color);
-    transition: all .4s
-}
-
-.layout-header .nav .list.active .links,
-.layout-header .nav .list:hover .links,
 .article-box .links:hover {
     color: var(--zhuluan-primary-color)
-}
-
-.layout-header .nav .nav-btn {
-    padding-left: 35px;
 }
 
 .layout-header .nav .btn {
@@ -553,10 +535,12 @@ a.unlinks-deco {
 }
 
 .precast-block {
+    height: auto;
     padding: 5px 12px;
     min-height: 50px;
     border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
+    bottom: 20px;
 }
 
 .precast-block .title {
@@ -569,11 +553,11 @@ a.unlinks-deco {
     flex: 1
 }
 
-#kw-target-box {
-    border-radius: var(--zhuluan-primary-border-radius) var(--zhuluan-primary-border-radius) 0 0;
+.precast-block {
+    border-radius: var(--zhuluan-primary-border-radius) var(--zhuluan-primary-border-radius) var(--zhuluan-primary-border-radius) var(--zhuluan-primary-border-radius);
 }
 
-#kw-target-box #kw-target {
+.precast-block #kw-target {
     display: block;
     width: 100%;
     padding-left: 13px;
@@ -610,20 +594,9 @@ a.unlinks-deco {
     background-color: rgba(52, 53, 65, .68)
 }
 
-.article .creating-loading.isLoading {
-    display: flex
-}
-
-.article .creating-loading .tips {
-    margin-top: 10px;
-    color: var(--zhuluan-primary-color)
-}
-
 .container {
     padding-right: 5px;
     padding-left: 5px;
-    /* margin-right: auto; */
-    /* margin-left: auto; */
     width: calc(100% - 40px);
     display: flex;
 }
@@ -642,16 +615,6 @@ a.unlinks-deco {
 
     .layout-header .logo .links img {
         width: auto
-    }
-
-    .layout-header .nav .list {
-        height: 35px;
-        line-height: 35px;
-    }
-
-    .layout-header .nav .nav-btn {
-        padding-left: 32px;
-        padding-top: 15px;
     }
 
     .layout-header .nav .btn {

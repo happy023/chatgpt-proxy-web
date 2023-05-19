@@ -34,9 +34,6 @@ body {
 
 .precast-block {
     border-color: var(--zhuluan-dark-color);
-}
-
-#fixed-block {
     background-color: #40414F;
 }
 
@@ -54,7 +51,7 @@ li.article-content {
     color: #fff;
 }
 
-#kw-target-box #kw-target {
+.precast-block #kw-target {
     color: #fff;
 }
 
