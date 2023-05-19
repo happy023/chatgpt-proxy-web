@@ -10,7 +10,17 @@
     <link rel="stylesheet" href="css/style-light.css?v0.3" class="style-light" disabled>
     <link rel="stylesheet" href="css/style-dark.css?v0.4" class="style-dark" disabled>
     <link rel="stylesheet" href="css/hightlight.css">
-
+    <script>
+        //初始化主题，需要尽快执行，所以放这里，默认暗黑主题
+        var thistheme = localStorage.getItem('theme');
+        if (thistheme == 'light') {
+            document.getElementsByClassName('style-light')[0].disabled = false;
+            document.getElementsByClassName('style-dark')[0].disabled = true;
+        } else {
+            document.getElementsByClassName('style-light')[0].disabled = true;
+            document.getElementsByClassName('style-dark')[0].disabled = false;
+        } 
+    </script>
 </head>
 
 <body>
