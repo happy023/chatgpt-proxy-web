@@ -131,44 +131,20 @@ function initEvents() {
                 case 'wechat-group':
 
                     break;
-                case 'theme-switcher-dark':
-                    toggleStyles();
-                    break;
-                case 'theme-switcher-light':
-                    toggleStyles();
-                    break;
             }
         });
     }
     //初始化二维码弹出事件
-    let wechatIcon = document.getElementById('wechat-group');
-    let popup = document.getElementById('wechat-popup');
-    wechatIcon.addEventListener('mouseover', function () {
-        popup.style.display = 'block';
+    $('#wechat-group').mouseover(function(){
+        $('#wechat-group').show();
     });
-    wechatIcon.addEventListener('mouseleave', function () {
-        popup.style.display = 'none';
+    $('#wechat-group').mouseleave(function(){
+        $('#wechat-group').hide();
     });
 }
 
-function toggleStyles() {
-    var light = document.getElementsByClassName('style-light')[0];
-    var dark = document.getElementsByClassName('style-dark')[0];
+function shownotice(){
 
-    let darkBtn = document.getElementById('theme-switcher-dark');
-    let lightBtn = document.getElementById('theme-switcher-light');
-
-    if (light.disabled) {
-        light.disabled = false;
-        dark.disabled = true;
-        darkBtn.style.display = 'block';
-        lightBtn.style.display = 'none';
-    } else {
-        light.disabled = true;
-        dark.disabled = false;
-        darkBtn.style.display = 'none';
-        lightBtn.style.display = 'block';
-    }
 }
 
 $(document).ready(function () {
@@ -380,8 +356,7 @@ $(document).ready(function () {
                         layer.msg(result.msg);
                     }
                 } else {
-                    var popup = document.getElementById('login-wx');
-                    popup.style.display = "none";
+                    $('#login-wx').hide();
                     streaming();
                 }
             }
@@ -399,13 +374,10 @@ $(document).ready(function () {
         return pwd;
     }
 
-
     initEvents();
 
-    if (isMobile()) {
-        let sidebar = document.getElementById('sidebar');
-        sidebar.style.display = 'none';
-        let header = document.getElementById('layout-header');
-        header.style.display = 'none';
+    if (!isMobile()) {
+        $('#sidebar').show();
+        $('#layout-header').show(); 
     }
 });
