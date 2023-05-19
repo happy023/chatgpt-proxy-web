@@ -33,11 +33,13 @@ body {
 }
 
 .precast-block {
+    border: 1px solid;
     border-color: var(--zhuluan-dark-color);
     background-color: #40414F;
 }
 
 #article-wrapper {
+    border: 1px solid;
     border-color: #353333;
 }
 
@@ -61,10 +63,16 @@ li.article-content {
 }
 
 .article-box-header {
+    border: 1px solid;
     border-color: #353333;
 }
 
 .talk-history{
+    border: 1px solid;
     border-color: #353333;
     color: white;
+}
+
+input:checked+label::after { 
+    background-color: rgb(93, 92, 89);
 }

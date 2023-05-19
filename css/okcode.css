@@ -523,7 +523,6 @@ a.unlinks-deco {
 }
 
 .article-box-header {
-    border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
     border-color: #353333;
     margin-top: 5px;
@@ -538,7 +537,6 @@ a.unlinks-deco {
     height: auto;
     padding: 5px 12px;
     min-height: 50px;
-    border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
     bottom: 20px;
 }
@@ -738,7 +736,6 @@ a.unlinks-deco {
 .talk-history {
     flex: 1;
     margin: 10px 10px 0px 0px;
-    border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
     padding-top: 20px;
     overflow-y: auto;
@@ -796,7 +793,6 @@ a.unlinks-deco {
 #article-wrapper {
     height: calc(100vh - 178px);
     overflow-y: auto;
-    border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
     box-shadow: var(--zhuluan-shadow);
 }
@@ -909,4 +905,5 @@ input:checked+label::before {
 
 input:checked+label::after {
     width: 100%;
+    background-color: rgb(201 183 133);
 }

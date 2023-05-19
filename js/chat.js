@@ -136,10 +136,10 @@ function initEvents() {
     }
     //初始化二维码弹出事件
     $('#wechat-group').mouseover(function(){
-        $('#wechat-group').show();
+        $('#wechat-popup').show();
     });
     $('#wechat-group').mouseleave(function(){
-        $('#wechat-group').hide();
+        $('#wechat-popup').hide();
     });
 }
 
