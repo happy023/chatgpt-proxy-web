@@ -1,5 +1,5 @@
 body {
-    background-color: #f5f4f4;
+    background-color: #3c80d3;
 }
 
 .logo-title {
@@ -19,21 +19,18 @@ body {
 }
 
 .preset-select {
-    background-color: white;
-    color: black;
-    border-color: #c8c5c0;
+    background-color: #75b6b8;
+    border: none;
 }
 
 .precast-block {
-    border: 1px solid;
-    border-color: #dcd3d3;
-    background-color: white;
+    border: none;
+    background-color: #75b6b8;
 }
 
 #article-wrapper {
-    border: 1px solid;
-    border-color: #dcd3d3;
-    background-color: #d8d8dc;
+    border: none;
+    background-color: #75b6b8;
 }
 
 li.article-title {
@@ -56,16 +53,14 @@ li.article-content {
 }
 
 .article-box-header {
-    border: 1px solid;
-    border-color: #dcd3d3;
-    background-color: white;
+    border: none;
+    background-color: #75b6b8;
 }
 
 .talk-history {
-    border: 1px solid;
-    border-color: #dcd3d3;
+    border: none;
     color: black;
-    background-color: #e7f8ff;
+    background-color: #df941b;
 }
 
 input:checked+label::after {
@@ -85,4 +80,8 @@ input:checked+label::after {
 .layui-layer {
     background-color: #fff;
     box-shadow: 1px 1px 50px rgba(0, 0, 0, .3);
+}
+
+.article {
+    color: greenyellow;
 }

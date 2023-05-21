@@ -79,7 +79,7 @@ function insertPresetText() {
 }
 
 function initcode() {
-    console['\x6c\x6f\x67']("\u672c\u7ad9\u4ee3\u7801\u4fee\u6539\u81ea\x68\x74\x74\x70\x3a\x2f\x2f\x67\x69\x74\x68\x75\x62\x2e\x63\x6f\x6d\x2f\x64\x69\x72\x6b\x31\x39\x38\x33\x2f\x63\x68\x61\x74\x67\x70\x74");
+    console.log("本站代码修改自http://github.com/dirk1983/chatgpt");
 }
 
 function copyToClipboard(text) {
@@ -117,33 +117,48 @@ function autoresize() {
     $("#article-wrapper").height(parseInt($(window).height()) - parseInt($("#fixed-block").height()) - parseInt($(".layout-header").height()) - 80);
 }
 
+function popupPanel(content, size) {
+    layer.open({
+        type: 1,
+        title: false,
+        closeBtn: 0,
+        shadeClose: true,
+        area: size || ['300px', '200px'],
+        content: content
+    });
+}
+
 function initEvents() {
     let icons = document.querySelectorAll('.sidebar .icon');
     for (let i = 0; i < icons.length; i++) {
         icons[i].addEventListener('click', function (e) {
             switch (e.currentTarget.id) {
                 case 'personal':
-
+                    popupPanel('<div class="about-layer">个人信息</div>');
                     break;
                 case 'about':
-
+                    popupPanel('<div class="about-layer">关于</div>');
                     break;
                 case 'wechat-group':
 
+                    break;
+                case 'setting':
+                    document.getElementById("setting-container").style.display = 'block';
+                    // popupPanel($('#setting-container'));
                     break;
             }
         });
     }
     //初始化二维码弹出事件
-    $('#wechat-group').mouseover(function(){
+    $('#wechat-group').mouseover(function () {
         $('#wechat-popup').show();
     });
-    $('#wechat-group').mouseleave(function(){
+    $('#wechat-group').mouseleave(function () {
         $('#wechat-popup').hide();
     });
 }
 
-function shownotice(){
+function shownotice() {
 
 }
 
@@ -352,7 +367,7 @@ $(document).ready(function () {
             success: function (result) {
                 if (!result.success) {
                     layer.close(loading);
-                    if(result.msg){
+                    if (result.msg) {
                         layer.msg(result.msg);
                     }
                 } else {
@@ -378,6 +393,6 @@ $(document).ready(function () {
 
     if (!isMobile()) {
         $('#sidebar').show();
-        $('#layout-header').show(); 
+        $('#layout-header').show();
     }
 });

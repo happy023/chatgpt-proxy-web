@@ -67,12 +67,27 @@ li.article-content {
     border-color: #353333;
 }
 
-.talk-history{
+.talk-history {
     border: 1px solid;
     border-color: #353333;
     color: white;
 }
 
-input:checked+label::after { 
+input:checked+label::after {
     background-color: rgb(93, 92, 89);
+}
+
+.talk-history-item {
+    color: white;
+    background-color: #4c4949;
+}
+
+.talk-new {
+    color: white;
+    background-color: #2a2a2a;
+}
+
+.layui-layer {
+    background-color: #fff;
+    box-shadow: 1px 1px 50px rgb(218 206 206 / 30%);
 }
