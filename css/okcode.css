@@ -735,11 +735,10 @@ a.unlinks-deco {
 
 .talk-history {
     flex: 1;
-    margin: 10px 10px 0px 0px;
-    border-radius: var(--zhuluan-primary-border-radius);
-    padding-top: 15px;
+    margin: 10px 10px 0px 0px; 
+    /* padding-top: 10px; */
     overflow-y: auto;
-    box-shadow: var(--zhuluan-shadow);
+    box-shadow: var(--zhuluan-shadow); 
 }
 
 @media (max-width:480px) {
@@ -751,12 +750,18 @@ a.unlinks-deco {
 @media (min-width:480px) {
     .talk-history {
         min-width: 250px;
-        display: '';
     }
 }
 
+.talk-history-content {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+    border: 1px solid;
+    border-radius: var(--zhuluan-primary-border-radius);
+    border-color: #353333;
+}
+
 .talk-history-item {
-    color: white;
     margin: 10px 15px 10px 15px;
     padding-left: 5px;
     padding-right: 5px;
@@ -764,7 +769,9 @@ a.unlinks-deco {
     height: 50px;
     background-color: #4c4949;
     display: flex;
-    justify-content: center;
+    /* 这两个属性都可以居中 */
+    /* justify-content: center; */
+    justify-content: space-around;
     align-items: center;
     cursor: pointer;
     font-size: 13px;
@@ -788,13 +795,13 @@ a.unlinks-deco {
     justify-content: center;
     align-items: center;
     color: gray;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-.talk-new { 
+.talk-new {
     display: flex;
     color: white;
-    margin: 10px 15px 10px 15px; 
+    margin: 10px 15px 10px 15px;
     border-radius: 10px;
     height: 50px;
     background-color: #2a2a2a;
@@ -813,7 +820,7 @@ a.unlinks-deco {
 }
 
 #article-wrapper {
-    height: calc(100vh - 178px);
+    height: calc(100vh - 160px);
     overflow-y: auto;
     border-radius: var(--zhuluan-primary-border-radius);
     box-shadow: var(--zhuluan-shadow);

@@ -62,10 +62,12 @@ li.article-content {
 }
 
 .talk-history {
-    border: 1px solid;
-    border-color: #dcd3d3;
     color: black;
     background-color: #e7f8ff;
+}
+
+.talk-history-content {
+    border: none;
 }
 
 input:checked+label::after {

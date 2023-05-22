@@ -58,9 +58,12 @@ li.article-content {
 }
 
 .talk-history {
-    border: none;
     color: black;
     background-color: #df941b;
+}
+
+.talk-history-content {
+    border: none;
 }
 
 input:checked+label::after {
