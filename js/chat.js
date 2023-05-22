@@ -1,4 +1,5 @@
 var contextarray = [];
+let contextId = '';
 
 var defaults = {
     html: false,        // Enable HTML tags in source
@@ -162,6 +163,92 @@ function shownotice() {
 
 }
 
+
+function loadTalkList() {
+    let talkData = JSON.parse(localStorage.getItem('talkData') || '[]');
+    for (let i = 0; i < talkData.length; i++) {
+        const talkItem = talkData[i];
+
+        const contextId = talkItem.contextId;
+        const prompt = talkItem.contextarray[0][0];
+        const talkSize = talkItem.contextarray.length;
+        const talkTime = talkItem.talkTime;
+
+        $('#talk-history-content').append(`
+            <div class="talk-history-item" id="` + contextId + `" onclick="loadTalkContext('` + contextId + `')"> 
+                <div>
+                    <span>` + prompt + `</span>
+                    <div class="talk-history-time">
+                        <span>`+ talkSize + `条对话</span>
+                        <span>`+ talkTime + `</span>
+                    </div>
+                </div>
+            </div>
+        `);
+    }
+}
+
+function deselectAllRecords() {
+    $('.talk-history-item').each((_, item) => {
+        $(item).removeClass('talk-history-item-selected');
+    });
+}
+
+function selectTalkRecord(id) {
+    deselectAllRecords();
+    $('#' + id).addClass('talk-history-item-selected');
+}
+
+function loadTalkContext(ctxId) {
+    let talkData = JSON.parse(localStorage.getItem('talkData') || '[]');
+    let selectedItem = null;
+    for (let i = 0; i < talkData.length; i++) {
+        const talkItem = talkData[i];
+        if (talkItem.contextId == ctxId) {
+            selectedItem = talkItem;
+            break;
+        }
+    }
+    if (selectedItem) {
+        //更新全局变量
+        contextId = ctxId;
+        contextarray = selectedItem.contextarray;
+        //清除界面聊天内容
+        $("#article-wrapper").html("");
+
+        //选中当前项
+        selectTalkRecord(contextId);
+
+        let items = contextarray;
+        for (let i = 0; i < items.length; i++) {
+            let prompt = items[i][0];
+            let answer = items[i][1];
+
+            let talkId = randomString(16);
+            //问题
+            $("#article-wrapper").append('<li class="article-title" id="q' + talkId + '"><pre></pre></li>');
+            for (var j = 0; j < prompt.length; j++) {
+                $("#q" + talkId).children('pre').text($("#q" + talkId).children('pre').text() + prompt[j]);
+            }
+            //答案
+            $("#article-wrapper").append('<li class="article-content" id="' + talkId + '"></li>');
+            answer = mdHtml.render(answer);
+            $("#" + talkId).html(answer);
+        }
+    }
+}
+
+function randomString(len) {
+    len = len || 32;
+    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+    var maxPos = $chars.length;
+    var pwd = '';
+    for (i = 0; i < len; i++) {
+        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return pwd;
+}
+
 $(document).ready(function () {
     let running = false;
     initcode();
@@ -195,12 +282,65 @@ $(document).ready(function () {
         return false;
     });
 
-    // $("#clean").click(function () {
-    //     $("#article-wrapper").html("");
-    //     contextarray = [];
-    //     layer.msg("清理完毕！");
-    //     return false;
-    // });
+    function newTalk() {
+        $("#article-wrapper").html("");
+        contextarray = [];
+        contextId = 'talk-' + randomString();
+        deselectAllRecords();
+    }
+    newTalk();
+
+    $("#new-chat").click(newTalk);
+
+    function updateHistory(contextarray) {
+        if (!contextId) {
+            throw new Error('发送错误，没有初始化聊天上下文');
+        }
+        let talkData = JSON.parse(localStorage.getItem('talkData') || '[]');
+        let currIndex = null;
+        for (let i = 0; i < talkData.length; i++) {
+            const talkItem = talkData[i];
+            if (talkItem.contextId === contextId) {
+                currIndex = i;
+                break;
+            }
+        }
+        if (currIndex === null) {
+            currIndex = talkData.length;
+            talkData[currIndex] = {};
+        }
+        let talkTime = (new Date(new Date().getTime() + 1000 * 60 * 60 * 8)).toISOString();
+        talkData[currIndex].contextId = contextId;
+        talkData[currIndex].contextarray = contextarray;
+        talkData[currIndex].talkTime = talkTime;
+        localStorage.setItem('talkData', JSON.stringify(talkData));
+
+        //界面历史记录栏更新
+        let talkDiv = $('#' + contextId);
+        let talkSize = contextarray.length;
+        let prompt = contextarray[0][0];
+        if (talkDiv.length === 0) {
+            $('#talk-history-content').append(`
+                <div class="talk-history-item talk-history-item-selected" id="` + contextId + `" onclick="loadTalkContext('` + contextId + `')">
+                    <div>
+                        <span>` + prompt + `</span>
+                        <div class="talk-history-time">
+                            <span>`+ talkSize + `条对话</span>
+                            <span>`+ talkTime + `</span>
+                        </div>
+                    </div>
+                </div>
+            `);
+            //选中当前项
+            selectTalkRecord(contextId);
+        } else {
+            $('#' + contextId + '>div>span').text(prompt);
+            $('#' + contextId + '>div>.talk-history-time')
+                .html('<span>' + talkSize + '条对话</span><span>' + talkTime + '</span>');
+        }
+    }
+    loadTalkList();
+    loadTalkContext();
 
     $("#showlog").click(function () {
         let btnArry = ['已阅'];
@@ -330,8 +470,13 @@ $(document).ready(function () {
                     isalltext = true;
 
                     console.log('<<---', alltext);
+
                     contextarray.push([prompt, alltext]);
                     contextarray = contextarray.slice(-5); //只保留最近5次对话作为上下文，以免超过最大tokens限制
+
+                    //创建或者更新聊天记录
+                    updateHistory(contextarray);
+
                     es.close();
                     return;
                 }
@@ -376,17 +521,6 @@ $(document).ready(function () {
                 }
             }
         });
-    }
-
-    function randomString(len) {
-        len = len || 32;
-        var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-        var maxPos = $chars.length;
-        var pwd = '';
-        for (i = 0; i < len; i++) {
-            pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-        }
-        return pwd;
     }
 
     initEvents();

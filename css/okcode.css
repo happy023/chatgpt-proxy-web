@@ -777,7 +777,6 @@ a.unlinks-deco {
     padding-right: 5px;
     border-radius: 10px;
     height: 50px;
-    background-color: #4c4949;
     display: flex;
     /* 这两个属性都可以居中 */
     /* justify-content: center; */
@@ -788,7 +787,8 @@ a.unlinks-deco {
 }
 
 .talk-history-item-selected {
-    background-color: #8f8282;
+    border: 3px solid;
+    border-color: #e49d57;
 }
 
 .talk-history-time {
