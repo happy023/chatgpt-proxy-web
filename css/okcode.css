@@ -782,6 +782,13 @@ a.unlinks-deco {
     border-color: #e49d57;
 }
 
+.talk-history-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+}
+
 .talk-history-time {
     display: flex;
     font-size: 10px;

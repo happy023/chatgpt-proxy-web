@@ -177,7 +177,7 @@ function loadTalkList() {
         $('#talk-history-content').append(`
             <div class="talk-history-item" id="` + contextId + `" onclick="loadTalkContext('` + contextId + `')"> 
                 <div>
-                    <span>` + prompt + `</span>
+                    <div class="talk-history-title">` + prompt + `</div>
                     <div class="talk-history-time">
                         <span>`+ talkSize + `条对话</span>
                         <span>`+ talkTime + `</span>
@@ -323,7 +323,7 @@ $(document).ready(function () {
             $('#talk-history-content').append(`
                 <div class="talk-history-item talk-history-item-selected" id="` + contextId + `" onclick="loadTalkContext('` + contextId + `')">
                     <div>
-                        <span>` + prompt + `</span>
+                        <div class="talk-history-title">` + prompt + `</div>
                         <div class="talk-history-time">
                             <span>`+ talkSize + `条对话</span>
                             <span>`+ talkTime + `</span>
@@ -334,7 +334,7 @@ $(document).ready(function () {
             //选中当前项
             selectTalkRecord(contextId);
         } else {
-            $('#' + contextId + '>div>span').text(prompt);
+            $('#' + contextId + '>div>.talk-history-title').text(prompt);
             $('#' + contextId + '>div>.talk-history-time')
                 .html('<span>' + talkSize + '条对话</span><span>' + talkTime + '</span>');
         }
