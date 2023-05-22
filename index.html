@@ -17,8 +17,6 @@
         if (thistheme == 'light') {
             document.getElementsByClassName('style-light')[0].disabled = false;
             document.getElementsByClassName('style-dark')[0].disabled = true;
-            document.getElementById('theme-switcher-dark')[0].style.display = '';
-            document.getElementById('theme-switcher-light')[0].style.display = '';
         } else {
             document.getElementsByClassName('style-light')[0].disabled = true;
             document.getElementsByClassName('style-dark')[0].disabled = false;
@@ -58,7 +56,7 @@
                             </div>
                         </div>
 
-                       
+
 
                         <div class="talk-history-item ">
                             <div>
@@ -301,11 +299,11 @@
         //初始化主题，需要尽快执行，所以放这里，默认暗黑主题
         var thistheme = localStorage.getItem('theme');
         if (thistheme == 'light') {
-            document.getElementById('theme-switcher-dark')[0].style.display = '';
-            document.getElementById('theme-switcher-light')[0].style.display = 'none';
+            document.getElementById('theme-switcher-dark').style.display = '';
+            document.getElementById('theme-switcher-light').style.display = 'none';
         } else {
-            document.getElementById('theme-switcher-dark')[0].style.display = 'none';
-            document.getElementById('theme-switcher-light')[0].style.display = '';
+            document.getElementById('theme-switcher-dark').style.display = 'none';
+            document.getElementById('theme-switcher-light').style.display = '';
         }
     </script>
 
