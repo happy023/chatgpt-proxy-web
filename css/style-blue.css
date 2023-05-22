@@ -1,8 +1,8 @@
 body {
     background-color: #3c80d3;
 }
-
-.logo-title {
+ 
+.header-logo { 
     color: black;
 }
 
@@ -10,11 +10,11 @@ body {
     color: black;
 }
 
-.logo-about {
+.header-about {
     color: darkgray;
 }
 
-.logo-about .links {
+.header-about .links {
     color: black;
 }
 

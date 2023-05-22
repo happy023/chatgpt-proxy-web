@@ -10,19 +10,19 @@ body {
     background: var(--zhuluan-dark-color);
 }
 
-.logo-title {
+.header-logo { 
     color: white;
 }
-
+ 
 #user-id {
     color: white;
 }
 
-.logo-about {
+.header-about {
     color: gray;
 }
 
-.logo-about .links {
+.header-about .links {
     color: rgb(236, 230, 230);
 }
 

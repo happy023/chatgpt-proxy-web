@@ -440,11 +440,20 @@ a.unlinks-deco {
 }
 
 .layout-header {
-    margin-left: 10px;
-    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     height: 40px;
     display: flex;
     align-items: center;
+}
+
+.header-logo {
+    min-width: 250px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-right: 10px;
+    color: white;
 }
 
 .layout-header h2 {
@@ -459,15 +468,6 @@ a.unlinks-deco {
     .layout-header h2 {
         font-size: 1.5em;
     }
-}
-
-.layout-header .logo .links {
-    cursor: pointer;
-    display: block;
-}
-
-.layout-header .logo .links img {
-    height: 100%;
 }
 
 .article-box .links:hover {
@@ -713,24 +713,15 @@ a.unlinks-deco {
     display: none;
 }
 
-.logo-title {
-    color: white;
-    text-decoration: none;
-}
-
-.logo-about {
+.header-about {
     text-decoration: none;
     font-size: x-small;
 }
 
-.logo-about .links {
+.header-about .links {
     color: rgb(236, 230, 230);
     text-decoration: none;
     font-size: x-small;
-}
-
-.layout-header .logo .links {
-    text-decoration: none;
 }
 
 .talk-history {
@@ -798,14 +789,6 @@ a.unlinks-deco {
     color: darkgray;
     justify-content: space-between;
     margin-top: 5px;
-}
-
-.talk-history-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: gray;
-    margin-bottom: 10px;
 }
 
 .talk-new {
