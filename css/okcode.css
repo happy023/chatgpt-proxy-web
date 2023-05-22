@@ -394,7 +394,7 @@ html {
 }
 
 .preset-select::-webkit-scrollbar {
-    width: 8px;
+    width: 3px;
 }
 
 .preset-select::-webkit-scrollbar-track {
@@ -735,10 +735,10 @@ a.unlinks-deco {
 
 .talk-history {
     flex: 1;
-    margin: 10px 10px 0px 0px; 
+    margin: 10px 10px 0px 0px;
     /* padding-top: 10px; */
     overflow-y: auto;
-    box-shadow: var(--zhuluan-shadow); 
+    box-shadow: var(--zhuluan-shadow);
 }
 
 @media (max-width:480px) {
@@ -759,6 +759,16 @@ a.unlinks-deco {
     border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);
     border-color: #353333;
+}
+
+
+.talk-history-content::-webkit-scrollbar {
+    width: 3px;
+}
+
+.talk-history-content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgb(180, 176, 176);
 }
 
 .talk-history-item {
@@ -827,12 +837,12 @@ a.unlinks-deco {
 }
 
 #article-wrapper::-webkit-scrollbar {
-    width: 10px;
+    width: 3px;
 }
 
 #article-wrapper::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: lightgrey;
+    background: rgb(180, 176, 176);
 }
 
 .article-box {
