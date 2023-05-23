@@ -29,6 +29,7 @@ export function updateHistory(contextarray) {
     let talkDiv = $('#' + chat.getContextId());
     let talkSize = contextarray.length;
     let prompt = contextarray[0][0];
+    const contextId = chat.getContextId();
     if (talkDiv.length === 0) {
         $('#talk-history-content').append(`
             <div class="talk-history-item talk-history-item-selected" id="` + chat.getContextId() + `">
@@ -41,7 +42,6 @@ export function updateHistory(contextarray) {
                 </div>
             </div>
         `);
-        const contextId = chat.getContextId();
         (function (contextId) {
             $('#' + contextId).click(() => loadTalkContext(contextId));
         })(contextId);
