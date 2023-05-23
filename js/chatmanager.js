@@ -41,12 +41,15 @@ export function updateHistory(contextarray) {
                 </div>
             </div>
         `);
-        $('#' + chat.getContextId()).click(() => loadTalkContext(chat.getContextId()));
+        const contextId = chat.getContextId();
+        (function (contextId) {
+            $('#' + contextId).click(() => loadTalkContext(contextId));
+        })(contextId);
         //选中当前项
-        selectTalkRecord(chat.getContextId());
+        selectTalkRecord(contextId);
     } else {
-        $('#' + chat.getContextId() + '>div>.talk-history-title').text(prompt);
-        $('#' + chat.getContextId() + '>div>.talk-history-time')
+        $('#' + contextId + '>div>.talk-history-title').text(prompt);
+        $('#' + contextId + '>div>.talk-history-time')
             .html('<span>' + talkSize + '条对话</span><span>' + talkTime + '</span>');
     }
 }
@@ -73,7 +76,9 @@ export function loadTalkList() {
             </div>
         `);
 
-        $('#' + contextId).click(() => loadTalkContext(contextId));
+        (function (contextId) {
+            $('#' + contextId).click(() => loadTalkContext(contextId));
+        })(contextId);
     }
 }
 
