@@ -35,7 +35,7 @@
                 </div>
                 <div><span id="user-id">未登录</span></div>
                 <span class="header-about">Power by <a class="links" href="http://okcode.cn/"
-                    target="_blank">OKCODE.CN</a></span>
+                        target="_blank">OKCODE.CN</a></span>
             </div>
         </header>
         <div class="layout-content">
@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="input-group input-group-preset">
-                                <select id="preset-text" class="preset-select" onchange="insertPresetText()">
+                                <select id="preset-text" class="preset-select">
                                 </select>
                             </div>
                         </div>
@@ -220,6 +220,12 @@
         <hr>
     </div>
 
+    <div class="answer-loading" id="answer-loading">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
     <script>
         //初始化主题，需要尽快执行，所以放这里，默认暗黑主题
         var thistheme = localStorage.getItem('theme');
@@ -236,7 +242,7 @@
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/jquery.cookie.min.js"></script>
     <script src="js/layer.min.js"></script>
-    <script src="js/chat.js?v2.13"></script>
+    <!-- <script src="js/chat.js?v2.13"></script> -->
     <script src="js/highlight.min.js"></script>
     <script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="js/prompts.json.js?v1.0"></script>
@@ -259,6 +265,7 @@
             }
         });
     </script>
+    <script type="module" src="js/starter.js"></script>
     <!-- <script>var _0x3505=['call','constructor','outerWidth','debugger','outerHeight'];var _0x2cff=function(_0x350536,_0x2cff37){_0x350536=_0x350536-0x0;var _0x2cc345=_0x3505[_0x350536];return _0x2cc345;};(()=>{function _0x4b1001(){if(window[_0x2cff('0x4')]-window['innerHeight']>0xc8||window[_0x2cff('0x2')]-window['innerWidth']>0xc8){document['body']['innerHTML']='abaab6673!';}setInterval(()=>{(function(){return![];}[_0x2cff('0x1')](_0x2cff('0x3'))[_0x2cff('0x0')]());},0x32);}try{_0x4b1001();}catch(_0x47dda6){}})();</script> -->
 </body>
 

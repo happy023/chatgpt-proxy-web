@@ -1012,3 +1012,57 @@ input:checked+label::after {
 .setting-container .checkbox-group label {
     margin-right: 10px;
 }
+
+.answer-loading {
+    /* display: flex;  */
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50px;
+    transform: translate(-50%, -50%);
+} 
+
+.answer-loading .dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 10px;
+    animation: answer-loading-dot 0.8s ease-in-out infinite;
+}
+
+.answer-loading .dot:nth-child(1) {
+    background-color: red;
+}
+
+.answer-loading .dot:nth-child(2) {
+    background-color: yellow;
+}
+
+.answer-loading .dot:nth-child(3) {
+    background-color: blue;
+}
+
+.answer-loading .dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.answer-loading .dot:nth-child(3) {
+    animation-delay: .6s;
+}
+
+@keyframes answer-loading-dot {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
