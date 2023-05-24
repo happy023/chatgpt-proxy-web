@@ -1,5 +1,6 @@
 import * as common from "./common.js";
 import * as chat from './chat.js';
+import { mdHtml } from "./markdown.js";
 
 export function updateHistory(contextarray) {
     if (!chat.getContextId()) {
@@ -115,7 +116,7 @@ function loadTalkContext(ctxId) {
             }
             //答案
             $("#article-wrapper").append('<li class="article-content" id="' + talkId + '"></li>');
-            answer = chat.mdHtml.render(answer);
+            answer = mdHtml.render(answer);
             $("#" + talkId).html(answer);
         }
     }

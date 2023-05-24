@@ -1,7 +1,6 @@
 import * as common from "./common.js";
 import * as chatmanager from "./chatmanager.js";
 import * as chat from "./chat.js";
-// import { running } from "./chat.js";
 
 function initcode() {
     console.log("本站代码修改自http://github.com/dirk1983/chatgpt");
@@ -10,7 +9,7 @@ function initcode() {
 function initEvents() {
     let icons = document.querySelectorAll('.sidebar .icon');
     for (let i = 0; i < icons.length; i++) {
-        icons[i].addEventListener('click', async e => {
+        icons[i].addEventListener('click', e => {
             switch (e.currentTarget.id) {
                 case 'personal':
                     common.popupPanel('<div class="about-layer">个人信息</div>');
