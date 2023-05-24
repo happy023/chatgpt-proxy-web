@@ -3,7 +3,7 @@
         display: flex;
         flex-direction: column;
         left: 50%;
-        top: 39%;
+        top: 45%;
         position: absolute;
         transform: translate(-50%, -50%);
         z-index: 1000;
@@ -27,10 +27,21 @@
         width: 500px;
         color: #fff;
         font-family: Arial, sans-serif;
-        font-size: 16px;
+        font-size: 13px;
         line-height: 1.5;
         margin: 0;
         padding: 0;
+        overflow-y: scroll;
+        height: 300px;
+    }
+
+    .setting-container::-webkit-scrollbar {
+        width: 1px;
+    }
+
+    .setting-container::-webkit-scrollbar-thumb {
+        /* border-radius: 10px; */
+        background: rgb(180, 176, 176);
     }
 
     .setting-container .item {
@@ -42,6 +53,7 @@
         width: 400px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         height: 40px
     }
 
@@ -58,7 +70,7 @@
         border: none;
         border-radius: 5px;
         color: #fff;
-        font-size: 16px;
+        font-size: 13px;
         padding: 10px;
         width: 100%;
     }
@@ -72,19 +84,19 @@
         margin-right: 10px;
     }
 
-    .setting-container .btn {
+    .setting-panel .btn {
         background-color: #4d4d4d;
         border: none;
         border-radius: 5px;
         color: #fff;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 13px;
         padding: 10px;
         margin: 10px;
         width: 100px;
     }
 
-    .setting-container .btn:hover {
+    .setting-panel .btn:hover {
         background-color: #5d5d5d;
     }
 
@@ -97,36 +109,70 @@
         background-color: rgba(0, 0, 0, 0.2);
         z-index: 999;
     }
+
+    .setting-panel .btn-wrapper {
+        align-self: center;
+    }
 </style>
 <div class="setting-overlay" id="setting-overlay"></div>
 <div class="setting-panel" id="setting-panel">
     <h1>配置界面</h1>
     <div class="setting-container">
         <div class="item">
-            <label for="config1">对话记忆条数</label>
-            <input type="number" id="config1" name="config1" value="10">
+            <div>
+                <label for="setting-count">对话记忆条数</label>
+                <div style="font-size: 10px;font-family: fangsong;">AI的上下文记忆长度</div>
+            </div>
+            <input type="number" id="setting-count" name="setting-count" value="10">
         </div>
         <div class="item">
-            <label for="config2">角色</label>
-            <input type="text" id="config2" name="config2" value="文本输入">
+            <div>
+                <label for="setting-role">角色</label>
+                <div style="font-size: 10px;font-family: fangsong;">角色</div>
+            </div>
+            <input type="text" id="setting-role" name="setting-role" placeholder="">
         </div>
         <div class="item">
-            <label for="config3">开关配置项</label>
-            <input type="checkbox" id="config3" name="config3" checked>
+            <div>
+                <label for="setting-apikey">API Key</label>
+                <div style="font-size: 10px;font-family: fangsong;">使用自己的 Key 可绕过密码访问限制</div>
+            </div>
+            <input type="text" id="setting-apikey" name="setting-apikey" placeholder="OpenAI API Key">
+        </div>
+        <div class="item">
+            <div>
+                <label for="config3">开关配置项</label>
+                <div style="font-size: 10px;font-family: fangsong;">AI的上下文记忆长度</div>
+            </div>
+            <input type="checkbox" name="config3" checked>
             <label for="config3">开启</label>
         </div>
         <div class="item">
-            <label for="config4">主题</label>
-            <select id="config4" name="config4">
-                <option value="option1">暗黑</option>
-                <option value="option2">轻盈</option>
-                <option value="option3">蔚蓝</option>
+            <div>
+                <label for="setting-theme">主题</label>
+                <div style="font-size: 10px;font-family: fangsong;">AI的上下文记忆长度</div>
+            </div>
+            <select id="setting-theme" name="setting-theme">
+                <option value="dark">暗黑</option>
+                <option value="light">轻盈</option>
+                <option value="blue">蔚蓝</option>
             </select>
         </div>
-        <div>
-            <button class="btn" id="setting-save" onclick="saveSetting()">保存</button>
-            <button class="btn" id="setting-close" onclick="closeSettingPanel()">关闭</button>
+        <div class="item">
+            <div>
+                <label for="setting-enterKey">发送键盘</label>
+                <div style="font-size: 10px;font-family: fangsong;">如何快捷触发消息</div>
+            </div>
+            <select id="setting-enterKey" name="setting-enterKey">
+                <option value="Enter">Enter</option>
+                <option value="Ctrl + Enter">Ctrl + Enter</option>
+                <option value="Alt + Enter">Alt + Enter</option>
+            </select>
         </div>
+    </div>
+    <div class="btn-wrapper">
+        <button class="btn" id="setting-save" onclick="saveSetting()">保存</button>
+        <button class="btn" id="setting-close" onclick="closeSettingPanel()">关闭</button>
     </div>
 </div>
 <script>
