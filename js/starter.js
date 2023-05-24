@@ -21,8 +21,12 @@ function initEvents() {
 
                     break;
                 case 'setting':
-                    document.getElementById("setting-container").style.display = 'block';
-                    // popupPanel($('#setting-container'));
+                    if (window.openSettingPanel) {
+                        window.openSettingPanel();
+                    } else {
+                        $("#setting-wrapper").load("/setting-panel.html");
+                        $('#setting-wrapper').show();
+                    }
                     break;
             }
         });

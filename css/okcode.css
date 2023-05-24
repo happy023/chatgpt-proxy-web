@@ -79,7 +79,6 @@ td {
 table {
     caption-side: bottom;
     border-collapse: collapse;
-
 }
 
 .table {
@@ -108,11 +107,6 @@ table {
 }
 
 .table-striped>tbody>tr:nth-of-type(odd)>* {
-    --bs-table-accent-bg: var(--bs-table-striped-bg);
-    color: var(--bs-table-striped-color);
-}
-
-.table-striped-columns> :not(caption)>tr> :nth-child(even) {
     --bs-table-accent-bg: var(--bs-table-striped-bg);
     color: var(--bs-table-striped-color);
 }
@@ -176,70 +170,16 @@ textarea {
     margin: 0;
 }
 
-button,
-input {
-    overflow: visible;
-}
 
-button,
-select {
-    text-transform: none;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-    -webkit-appearance: button;
-}
-
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-    border-style: none;
-    padding: 0;
-}
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-    outline: 1px dotted ButtonText;
-}
-
-fieldset {
-    padding: 0.35em 0.75em 0.625em;
-}
-
-legend {
-    box-sizing: border-box;
-    color: inherit;
-    display: table;
-    max-width: 100%;
-    padding: 0;
-    white-space: normal;
-}
-
-progress {
-    vertical-align: baseline;
-}
-
-textarea {
+.precast-block textarea {
     overflow: auto;
     height: auto;
     border: 0;
     resize: none;
 }
 
-textarea:focus {
+.precast-block textarea:focus {
     outline: none;
-}
-
-[type="checkbox"],
-[type="radio"] {
-    box-sizing: border-box;
-    padding: 0;
 }
 
 body {
@@ -299,34 +239,6 @@ body * {
     align-items: center;
 }
 
-input {
-    /* text-rendering: auto;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    cursor: text;
-    margin: 0em;
-    padding: 1px 2px;
-    border: none;
-    text-indent: 0;
-    background: transparent;
-    resize: none;
-    outline: none;
-    -webkit-appearance: none;
-    line-height: normal; */
-}
-
-.input:focus {
-    /* outline: none;
-    border-color: none */
-}
-
 html {
     --zhuluan-white-color: #fff;
     --zhuluan-black-2-color: #353333;
@@ -365,7 +277,7 @@ html {
     src: url('iconfont.woff2') format('woff2'), url('iconfont.woff') format('woff'), url('iconfont.ttf') format('truetype');
 }
 
-.input-group {
+.article-box-header .input-group {
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -888,7 +800,7 @@ pre {
     white-space: pre-wrap;
 }
 
-input {
+.article-box-header input {
     display: none;
 }
 
@@ -904,7 +816,7 @@ input {
     overflow: hidden;
 }
 
-label::before {
+.article-box-header label::before {
     display: block;
     content: '';
     width: 16px;
@@ -918,7 +830,7 @@ label::before {
     transition: all .3s;
 }
 
-label::after {
+.article-box-header label::after {
     display: block;
     content: '';
     width: 0;
@@ -928,7 +840,7 @@ label::after {
     border-radius: 10px;
 }
 
-input:checked+label::before {
+.article-box-header input:checked+label::before {
     left: 20px;
 }
 
@@ -944,78 +856,8 @@ input:checked+label::after {
     color: white;
 }
 
-.setting-container {
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    width: 40%;
-    height: 40%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 10000;
-    color: black;
-    display: none;
-
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-}
-
-.setting-container h1 {
-    text-align: center;
-    margin-top: 0;
-}
-
-.setting-container .setting-form-group {
-    margin: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.setting-container .setting-form-group .config-title {
-    display: block;
-    margin-top: 3px;
-    margin-left: 20px;
-    flex: 1;
-}
-
-.setting-container .setting-form-group input[type="text"],
-.setting-container .setting-form-group select {
-    display: block;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-    margin-top: 5px;
-    margin-right: 20px;
-    flex: 3;
-}
-
-.setting-container hr {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.setting-container .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 5px;
-    margin-left: -15px;
-    flex: 3;
-}
-
-.setting-container .checkbox-group label {
-    margin-right: 10px;
-}
-
 .answer-loading {
-    /* display: flex;  */
-    display: none; 
+    display: none;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -1023,7 +865,7 @@ input:checked+label::after {
     left: 50%;
     height: 50px;
     transform: translate(-50%, -50%);
-} 
+}
 
 .answer-loading .dot {
     width: 20px;
