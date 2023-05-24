@@ -89,4 +89,9 @@ $(document).ready(function () {
         $('#sidebar').show();
         $('#layout-header').show();
     }
+
 });
+
+//异步导入其它模块
+await import('./theme.js');
+await import('./prompts.json.js');

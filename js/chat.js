@@ -34,14 +34,14 @@ export function send_post() {
         return;
     }
 
-    var prompt = $("#kw-target").val();
+    let prompt = $("#kw-target").val();
 
     if (prompt == "") {
         layer.msg("请输入您的问题", { icon: 5 });
         return;
     }
 
-    var loading = layer.msg('正在组织语言，请稍等片刻...', {
+    let loading = layer.msg('正在组织语言，请稍等片刻...', {
         icon: 16,
         shade: 0.4,
         time: false //取消自动关闭
@@ -50,13 +50,13 @@ export function send_post() {
     // $('#answer-loading').css('display','flex'); 
 
     function streaming() {
-        var es = new EventSource("stream.php");
-        var isstarted = true;
-        var alltext = "";
-        var isalltext = false;
+        let es = new EventSource("stream.php");
+        let isstarted = true;
+        let alltext = "";
+        let isalltext = false;
         es.onerror = function (event) {
             layer.close(loading);
-            var errcode = common.getCookie("errcode");
+            let errcode = common.getCookie("errcode");
             switch (errcode) {
                 case "invalid_api_key":
                     layer.msg("API-KEY不合法");
@@ -104,7 +104,7 @@ export function send_post() {
                 isstarted = false;
                 let answerId = common.randomString(16);
                 $("#article-wrapper").append('<li class="article-title" id="q' + answerId + '"><pre></pre></li>');
-                for (var j = 0; j < prompt.length; j++) {
+                for (let j = 0; j < prompt.length; j++) {
                     $("#q" + answerId).children('pre').text($("#q" + answerId).children('pre').text() + prompt[j]);
                 }
                 $("#article-wrapper").append('<li class="article-content" id="' + answerId + '"></li>');
@@ -166,7 +166,7 @@ export function send_post() {
                 return;
             }
             if (event.data.startsWith('{')) {
-                var json = eval("(" + event.data + ")");
+                let json = eval("(" + event.data + ")");
                 if (json.choices[0].delta.hasOwnProperty("content")) {
                     if (alltext == "") {
                         alltext = json.choices[0].delta.content.replace(/^\n+/, ''); //去掉回复消息中偶尔开头就存在的连续换行符

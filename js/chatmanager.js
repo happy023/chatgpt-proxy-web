@@ -111,7 +111,7 @@ function loadTalkContext(ctxId) {
             let talkId = common.randomString(16);
             //问题
             $("#article-wrapper").append('<li class="article-title" id="q' + talkId + '"><pre></pre></li>');
-            for (var j = 0; j < prompt.length; j++) {
+            for (let j = 0; j < prompt.length; j++) {
                 $("#q" + talkId).children('pre').text($("#q" + talkId).children('pre').text() + prompt[j]);
             }
             //答案

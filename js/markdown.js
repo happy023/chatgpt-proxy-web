@@ -13,7 +13,7 @@ let defaults = {
 defaults.highlight = function (str, lang) {
     if (!defaults._highlight || !window.hljs) { return ''; }
 
-    var hljs = window.hljs;
+    let hljs = window.hljs;
     if (lang && hljs.getLanguage(lang)) {
         try {
             return hljs.highlight(lang, str).value;
@@ -34,7 +34,7 @@ mdHtml.renderer.rules.table_open = function () {
 };
 
 mdHtml.renderer.rules.paragraph_open = function (tokens, idx) {
-    var line;
+    let line;
     if (tokens[idx].lines && tokens[idx].level === 0) {
         line = tokens[idx].lines[0];
         return '<p class="line" data-line="' + line + '">';
@@ -43,7 +43,7 @@ mdHtml.renderer.rules.paragraph_open = function (tokens, idx) {
 };
 
 mdHtml.renderer.rules.heading_open = function (tokens, idx) {
-    var line;
+    let line;
     if (tokens[idx].lines && tokens[idx].level === 0) {
         line = tokens[idx].lines[0];
         return '<h' + tokens[idx].hLevel + ' class="line" data-line="' + line + '">';

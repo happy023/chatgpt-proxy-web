@@ -1,7 +1,7 @@
 export function getCookie(name) {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
+    let cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
         if (cookie.indexOf(name + '=') === 0) {
             return cookie.substring(name.length + 1, cookie.length);
         }
@@ -26,11 +26,11 @@ export function insertPresetText() {
 }
 
 export function copyToClipboard(text) {
-    var input = document.createElement('textarea');
+    let input = document.createElement('textarea');
     input.innerHTML = text;
     document.body.appendChild(input);
     input.select();
-    var result = document.execCommand('copy');
+    let result = document.execCommand('copy');
     document.body.removeChild(input);
     return result;
 }
@@ -41,10 +41,10 @@ export function copycode(obj) {
 }
 
 export function autoresize() {
-    var textarea = $('#kw-target');
-    var width = textarea.width();
-    var content = (textarea.val() + "a").replace(/\\n/g, '<br>');
-    var div = $('<div>').css({
+    let textarea = $('#kw-target');
+    let width = textarea.width();
+    let content = (textarea.val() + "a").replace(/\\n/g, '<br>');
+    let div = $('<div>').css({
         'position': 'absolute',
         'top': '-99999px',
         'border': '1px solid red',
@@ -53,8 +53,8 @@ export function autoresize() {
         'line-height': '20px',
         'white-space': 'pre-wrap'
     }).html(content).appendTo('body');
-    var height = div.height();
-    var rows = Math.ceil(height / 20);
+    let height = div.height();
+    let rows = Math.ceil(height / 20);
     div.remove();
     textarea.attr('rows', rows);
     $("#article-wrapper").height(parseInt($(window).height()) - parseInt($("#fixed-block").height()) - parseInt($(".layout-header").height()) - 80);
@@ -77,9 +77,9 @@ function shownotice() {
 
 export function randomString(len) {
     len = len || 32;
-    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-    var maxPos = $chars.length;
-    var pwd = '';
+    let $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+    let maxPos = $chars.length;
+    let pwd = '';
     for (let i = 0; i < len; i++) {
         pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
     }

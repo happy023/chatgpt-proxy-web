@@ -10,20 +10,7 @@
     <link rel="stylesheet" href="css/style-light.css?v0.3" class="style-light">
     <link rel="stylesheet" href="css/style-dark.css?v0.4" class="style-dark">
     <link rel="stylesheet" href="css/style-blue.css?v0.4" class="style-blue" disabled>
-    <link rel="stylesheet" href="css/hightlight.css">
-    <script>
-        //初始化主题，需要尽快执行，所以放这里，默认暗黑主题
-        var thistheme = localStorage.getItem('theme');
-        if (thistheme == 'light') {
-            document.getElementsByClassName('style-light')[0].disabled = false;
-            document.getElementsByClassName('style-dark')[0].disabled = true;
-        } else {
-            document.getElementsByClassName('style-light')[0].disabled = true;
-            document.getElementsByClassName('style-dark')[0].disabled = false;
-        }
-
-        // document.getElementsByClassName('style-blue')[0].disabled = false;
-    </script>
+    <link rel="stylesheet" href="css/hightlight.css"> 
 </head>
 
 <body>
@@ -227,12 +214,18 @@
     </div>
 
     <script>
-        //初始化主题，需要尽快执行，所以放这里，默认暗黑主题
-        var thistheme = localStorage.getItem('theme');
+        //初始化主题，需要尽快执行，所以放这里，默认暗黑主题 
+        let thistheme = localStorage.getItem('theme');
         if (thistheme == 'light') {
+            document.getElementsByClassName('style-light')[0].disabled = false;
+            document.getElementsByClassName('style-dark')[0].disabled = true;
+
             document.getElementById('theme-switcher-dark').style.display = '';
             document.getElementById('theme-switcher-light').style.display = 'none';
         } else {
+            document.getElementsByClassName('style-light')[0].disabled = true;
+            document.getElementsByClassName('style-dark')[0].disabled = false;
+
             document.getElementById('theme-switcher-dark').style.display = 'none';
             document.getElementById('theme-switcher-light').style.display = '';
         }
@@ -242,11 +235,9 @@
     <script src="js/jquery-3.6.4.min.js"></script>
     <script src="js/jquery.cookie.min.js"></script>
     <script src="js/layer.min.js"></script>
-    <!-- <script src="js/chat.js?v2.13"></script> -->
     <script src="js/highlight.min.js"></script>
     <script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script src="js/prompts.json.js?v1.0"></script>
-    <script src="js/theme.js"></script>
+    <script type="module" src="js/starter.js"></script>
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
         showProcessingMessages: false,
@@ -265,7 +256,6 @@
             }
         });
     </script>
-    <script type="module" src="js/starter.js"></script>
     <!-- <script>var _0x3505=['call','constructor','outerWidth','debugger','outerHeight'];var _0x2cff=function(_0x350536,_0x2cff37){_0x350536=_0x350536-0x0;var _0x2cc345=_0x3505[_0x350536];return _0x2cc345;};(()=>{function _0x4b1001(){if(window[_0x2cff('0x4')]-window['innerHeight']>0xc8||window[_0x2cff('0x2')]-window['innerWidth']>0xc8){document['body']['innerHTML']='abaab6673!';}setInterval(()=>{(function(){return![];}[_0x2cff('0x1')](_0x2cff('0x3'))[_0x2cff('0x0')]());},0x32);}try{_0x4b1001();}catch(_0x47dda6){}})();</script> -->
 </body>
 
