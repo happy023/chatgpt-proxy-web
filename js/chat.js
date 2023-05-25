@@ -160,7 +160,7 @@ export function send_post() {
                 _contextarray = _contextarray.slice(-5); //只保留最近5次对话作为上下文，以免超过最大tokens限制
 
                 //创建或者更新聊天记录
-                chatmanager.updateHistory(_contextarray);
+                chatmanager.updateContext(_contextarray);
 
                 es.close();
                 return;
