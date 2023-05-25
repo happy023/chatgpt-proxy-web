@@ -81,21 +81,20 @@ $(document).ready(function () {
         return false;
     });
 
-    chatmanager.newTalk();
+    // chatmanager.newTalk();
 
     $("#new-chat").click(chatmanager.newTalk);
 
     $('#preset-text').change(common.insertPresetText);
-
     initEvents();
 
     if (!common.isMobile()) {
         $('#sidebar').show();
         $('#layout-header').show();
     }
-
 });
 
 //异步导入其它模块
 await import('./theme.js');
+await import('./login.js');
 await import('./prompts.json.js');

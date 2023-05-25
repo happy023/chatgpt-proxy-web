@@ -88,3 +88,6 @@ input:checked+label::after {
     background-color: #fff;
     box-shadow: 1px 1px 50px rgba(0, 0, 0, .3);
 }
+.aboutAi {
+    color: black; 
+}

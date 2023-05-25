@@ -93,3 +93,6 @@ input:checked+label::after {
     background-color: #fff;
     box-shadow: 1px 1px 50px rgb(218 206 206 / 30%);
 }
+.aboutAi {
+    color: white; 
+}

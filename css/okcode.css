@@ -587,6 +587,7 @@ a.unlinks-deco {
 #user-id {
     color: white;
     font-size: small;
+    cursor: pointer;
 }
 
 .sidebar {
@@ -906,4 +907,10 @@ input:checked+label::after {
     100% {
         transform: scale(1);
     }
+}
+
+.aboutAi {
+    color: white;
+    font-family: fangsong;
+    font-style: oblique;
 }

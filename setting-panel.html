@@ -75,8 +75,7 @@
         width: 100%;
     }
 
-    .setting-container input:focus 
-    .setting-container select:focus{
+    .setting-container input:focus .setting-container select:focus {
         outline: none;
         box-shadow: none;
     }
@@ -121,6 +120,13 @@
     <div class="setting-container">
         <div class="item">
             <div>
+                <label for="setting-username">用户名</label>
+                <div style="font-size: 10px;font-family: fangsong;">用户名</div>
+            </div>
+            <input type="text" id="setting-username" name="setting-role" placeholder="">
+        </div>
+        <div class="item">
+            <div>
                 <label for="setting-count">对话记忆条数</label>
                 <div style="font-size: 10px;font-family: fangsong;">AI的上下文记忆长度</div>
             </div>
@@ -129,29 +135,29 @@
         <div class="item">
             <div>
                 <label for="setting-role">角色</label>
-                <div style="font-size: 10px;font-family: fangsong;">角色</div>
+                <div style="font-size: 10px;font-family: fangsong;">你想和谁聊天？</div>
             </div>
             <input type="text" id="setting-role" name="setting-role" placeholder="">
         </div>
         <div class="item">
             <div>
                 <label for="setting-apikey">API Key</label>
-                <div style="font-size: 10px;font-family: fangsong;">使用自己的 Key 可绕过密码访问限制</div>
+                <div style="font-size: 10px;font-family: fangsong;">使用自己的Key</div>
             </div>
             <input type="text" id="setting-apikey" name="setting-apikey" placeholder="OpenAI API Key">
         </div>
         <div class="item">
             <div>
-                <label for="config3">开关配置项</label>
-                <div style="font-size: 10px;font-family: fangsong;">AI的上下文记忆长度</div>
+                <label for="setting-suggestprompt">提示词自动补全</label>
+                <div style="font-size: 10px;font-family: fangsong;">输入/，显示预定角色描述</div>
             </div>
-            <input type="checkbox" name="config3" checked>
-            <label for="config3">开启</label>
+            <input type="checkbox" name="setting-suggestprompt" id="setting-suggestprompt" checked style="width: 120px;height: 17px;">
+            <label id="setting-suggestprompt-status">开启</label>
         </div>
         <div class="item">
             <div>
                 <label for="setting-theme">主题</label>
-                <div style="font-size: 10px;font-family: fangsong;">AI的上下文记忆长度</div>
+                <div style="font-size: 10px;font-family: fangsong;">界面主题调整</div>
             </div>
             <select id="setting-theme" name="setting-theme">
                 <option value="dark">暗黑</option>
@@ -190,4 +196,15 @@
         alert('保存成功');
         closeSettingPanel();
     }
+
+    function switchAutoPrompt() {
+        let autoprompt = $('#setting-suggestprompt');
+        if (autoprompt[0].checked) {
+            $('#setting-suggestprompt-status').text('开启');
+        } else {
+            $('#setting-suggestprompt-status').text('关闭');
+        }
+    }
+
+    $('#setting-suggestprompt').click(switchAutoPrompt);
 </script>
