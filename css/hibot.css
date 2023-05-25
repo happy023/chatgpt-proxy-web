@@ -910,7 +910,6 @@ input:checked+label::after {
 }
 
 .aboutAi {
-    color: white;
     font-family: fangsong;
     font-style: oblique;
 }
