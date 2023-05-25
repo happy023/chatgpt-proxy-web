@@ -490,7 +490,7 @@ a.unlinks-deco {
 
 .article {
     flex: 5;
-    margin: 10px 10px 0px 0px;
+    margin: 0px 10px 0px 0px;
 }
 
 .article .creating-loading {
@@ -639,10 +639,11 @@ a.unlinks-deco {
 
 .talk-history {
     flex: 1;
-    margin: 10px 10px 0px 0px;
+    margin: 0px 10px 0px 0px;
     /* padding-top: 10px; */
     overflow-y: auto;
     box-shadow: var(--zhuluan-shadow);
+    border-radius: var(--zhuluan-primary-border-radius);
 }
 
 @media (max-width:480px) {
@@ -661,7 +662,6 @@ a.unlinks-deco {
     max-height: calc(100vh - 210px);
     overflow-y: auto;
     border: 1px solid;
-    border-radius: var(--zhuluan-primary-border-radius);
     border-color: #353333;
 }
 

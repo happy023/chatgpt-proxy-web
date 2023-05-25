@@ -16,11 +16,15 @@ function doChangeTheme(nextTheme) {
         $('.style-light').prop("disabled", true);
         $('#theme-switcher-light').show();
         $('#theme-switcher-dark').hide();
+        $(document.body).addClass('theme-dark');
+        $(document.body).removeClass('theme-light');
     } else {
         $('.style-light').prop("disabled", false);
         $('.style-dark').prop("disabled", true);
         $('#theme-switcher-dark').show();
         $('#theme-switcher-light').hide();
+        $(document.body).addClass('theme-light');
+        $(document.body).removeClass('theme-dark');
     }
 }
 

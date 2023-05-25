@@ -36,11 +36,11 @@
     }
 
     .setting-container::-webkit-scrollbar {
-        width: 1px;
+        border-radius: 10px;
+        width: 2px;
     }
 
     .setting-container::-webkit-scrollbar-thumb {
-        /* border-radius: 10px; */
         background: rgb(180, 176, 176);
     }
 
@@ -113,6 +113,43 @@
     .setting-panel .btn-wrapper {
         align-self: center;
     }
+
+    .theme-light .setting-panel h1 {
+        color: black;
+    }
+
+    .theme-light .setting-container {
+        color: black;
+    }
+
+    .theme-light .setting-container::-webkit-scrollbar-thumb {
+        background: rgb(106, 104, 104);
+    }
+
+    .theme-light .setting-container .item {
+        background-color: #e0e0e0;
+        box-shadow: none;
+    }
+
+    .theme-light .setting-container input[type="number"],
+    .theme-light .setting-container input[type="text"],
+    .theme-light .setting-container select {
+        background-color: white;
+        color: black;
+    }
+
+    .theme-light .setting-panel .btn {
+        background-color: #fff;
+        color: black;
+    }
+
+    .theme-light .setting-panel .btn:hover {
+        background-color: #d3d0d0;
+    }
+
+    .theme-light .setting-overlay {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
 </style>
 <div class="setting-overlay" id="setting-overlay"></div>
 <div class="setting-panel" id="setting-panel">
@@ -151,8 +188,11 @@
                 <label for="setting-suggestprompt">提示词自动补全</label>
                 <div style="font-size: 10px;font-family: fangsong;">输入/，显示预定角色描述</div>
             </div>
-            <input type="checkbox" name="setting-suggestprompt" id="setting-suggestprompt" checked style="width: 120px;height: 17px;">
-            <label id="setting-suggestprompt-status">开启</label>
+            <div style=" justify-content: center;display: flex;align-items:center">
+                <input type="checkbox" name="setting-suggestprompt" id="setting-suggestprompt" checked=""
+                    style="width: 120px;height: 17px;"><label id="setting-suggestprompt-status">开启</label>
+            </div>
+
         </div>
         <div class="item">
             <div>
