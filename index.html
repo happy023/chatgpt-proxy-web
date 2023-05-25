@@ -180,18 +180,22 @@
     <script>
         //初始化主题，需要尽快执行，所以放这里，默认暗黑主题 
         let thistheme = localStorage.getItem('theme');
+        if (!thistheme) {
+            thistheme = 'dark';
+            localStorage.setItem('theme', thistheme);
+        }
         if (thistheme == 'light') {
             document.getElementsByClassName('style-light')[0].disabled = false;
             document.getElementsByClassName('style-dark')[0].disabled = true;
 
-            document.getElementById('theme-switcher-dark').style.display = '';
+            document.getElementById('theme-switcher-dark').style.display = 'block';
             document.getElementById('theme-switcher-light').style.display = 'none';
         } else {
             document.getElementsByClassName('style-light')[0].disabled = true;
             document.getElementsByClassName('style-dark')[0].disabled = false;
 
             document.getElementById('theme-switcher-dark').style.display = 'none';
-            document.getElementById('theme-switcher-light').style.display = '';
+            document.getElementById('theme-switcher-light').style.display = 'block';
         }
     </script>
 

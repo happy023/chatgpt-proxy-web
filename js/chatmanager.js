@@ -13,13 +13,12 @@ export function updateContext(contextarray) {
     const contextId = record.contextId;
     let talkDiv = $('#' + contextId);
     let talkSize = record.contextarray.length;
-    let prompt = record.contextarray[0][0];
     let talkTime = record.talkTime;
     if (talkDiv.length === 0) {
         $('#talk-history-content').append(`
             <div class="talk-history-item talk-history-item-selected" id="` + chat.getContextId() + `">
                 <div>
-                    <div class="talk-history-title">` + prompt + `</div>
+                    <div class="talk-history-title">` + record.prompt + `</div>
                     <div class="talk-history-time">
                         <span>`+ talkSize + `条对话</span>
                         <span>`+ talkTime + `</span>
@@ -33,7 +32,6 @@ export function updateContext(contextarray) {
         //选中当前项
         selectTalkRecord(contextId);
     } else {
-        $('#' + contextId + '>div>.talk-history-title').text(prompt);
         $('#' + contextId + '>div>.talk-history-time')
             .html('<span>' + talkSize + '条对话</span><span>' + talkTime + '</span>');
     }
@@ -45,7 +43,7 @@ export function loadTalkList() {
         const contextId = contextIdList[i];
         let context = findContextById(contextId);
 
-        const prompt = context.contextarray[0][0];
+        const prompt = context.prompt;
         const talkSize = context.contextarray.length;
         const talkTime = context.talkTime;
 
@@ -115,13 +113,16 @@ function saveContext(contextId, contextarray) {
     let record;
     if (!talkStr) {
         record = {
-            contextId: contextId
+            contextId: contextId,
+            prompt: contextarray[0][0],
+            contextarray: []
         };
         addContextId(contextId);
     } else {
         record = JSON.parse(talkStr);
     }
-    record.contextarray = contextarray;
+    //追加最后一条对话
+    record.contextarray.push(contextarray[contextarray.length - 1]);
     record.talkTime = nowTime();
     localStorage.setItem(storeId, JSON.stringify(record));
     return record;
