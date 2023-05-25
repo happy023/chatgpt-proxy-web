@@ -73,6 +73,7 @@ li.article-content {
 
 .talk-history-content {
     border-color: #353333;
+    border: 1px solid; 
 }
 
 input:checked+label::after {

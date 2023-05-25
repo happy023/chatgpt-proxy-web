@@ -661,8 +661,6 @@ a.unlinks-deco {
 .talk-history-content {
     max-height: calc(100vh - 210px);
     overflow-y: auto;
-    border: 1px solid;
-    border-color: #353333;
 }
 
 .talk-history-content::-webkit-scrollbar {
