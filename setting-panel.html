@@ -10,7 +10,7 @@
     }
 
     .setting-panel h1 {
-        color: #3d3d3d;
+        color: #fff;
         font-size: 22px;
         margin-bottom: 20px;
         text-align: center;
@@ -153,7 +153,7 @@
 </style>
 <div class="setting-overlay" id="setting-overlay"></div>
 <div class="setting-panel" id="setting-panel">
-    <h1>配置界面</h1>
+    <h1>配置</h1>
     <div class="setting-container">
         <div class="item">
             <div>
@@ -167,14 +167,14 @@
                 <label for="setting-count">对话记忆条数</label>
                 <div style="font-size: 10px;font-family: fangsong;">AI的上下文记忆长度</div>
             </div>
-            <input type="number" id="setting-count" name="setting-count" value="10">
+            <input type="number" id="setting-count" name="setting-count" value="5">
         </div>
         <div class="item">
             <div>
                 <label for="setting-role">角色</label>
                 <div style="font-size: 10px;font-family: fangsong;">你想和谁聊天？</div>
             </div>
-            <input type="text" id="setting-role" name="setting-role" placeholder="">
+            <input type="text" id="setting-role" name="setting-role" placeholder="您期望AI是一个什么角色,参考预设话术">
         </div>
         <div class="item">
             <div>
@@ -212,7 +212,7 @@
             </div>
             <select id="setting-enterKey" name="setting-enterKey">
                 <option value="Enter">Enter</option>
-                <option value="Ctrl + Enter">Ctrl + Enter</option>
+                <option selected value="Ctrl + Enter">Ctrl + Enter</option>
                 <option value="Alt + Enter">Alt + Enter</option>
             </select>
         </div>

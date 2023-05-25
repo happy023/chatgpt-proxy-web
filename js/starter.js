@@ -15,7 +15,9 @@ function initEvents() {
                     common.popupPanel('<div class="about-layer">个人信息</div>');
                     break;
                 case 'about':
-                    common.popupPanel('<div class="about-layer">关于</div>');
+                    common.popupPanel(`
+                        <div class="about-layer">关于<br><br>联系邮箱：admin@okcode.cn</div>
+                    `);
                     break;
                 case 'wechat-group':
 
@@ -37,6 +39,17 @@ function initEvents() {
     });
     $('#wechat-group').mouseleave(function () {
         $('#wechat-popup').hide();
+    });
+
+    $('#about-login-href').click(function(){
+        common.popupPanel(`
+            <div class="about-layer">关于微信扫码登录<br><br>
+                <ul>
+                    <li style='list-style: circle;'>扫描登录仅用于识别用户唯一性，系统不会获取您任何个人信息，请放心扫码</li>
+                    <li style='list-style: circle;'>登录之后，后台会为您分配独立的api通道使用，AI的响应速度会更加快。</li>
+                </ul>
+            </div>
+        `,[400,200]); 
     });
 }
 
@@ -86,6 +99,7 @@ $(document).ready(function () {
     $("#new-chat").click(chatmanager.newTalk);
 
     $('#preset-text').change(common.insertPresetText);
+
     initEvents();
 
     if (!common.isMobile()) {

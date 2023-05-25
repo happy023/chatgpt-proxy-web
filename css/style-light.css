@@ -91,3 +91,7 @@ input:checked+label::after {
 .aboutAi {
     color: black; 
 }
+
+.about-login-href { 
+    color: black; 
+}

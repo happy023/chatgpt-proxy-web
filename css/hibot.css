@@ -596,6 +596,7 @@ a.unlinks-deco {
     right: 0;
     width: 38px;
     background-color: transparent;
+    display: none;
 }
 
 .sidebar .icon {
@@ -848,7 +849,7 @@ input:checked+label::after {
 }
 
 .about-layer {
-    padding: 20px;
+    padding: 20px 30px 20px 30px;
     height: 100%;
     background-color: gray;
     color: white;
@@ -909,5 +910,10 @@ input:checked+label::after {
 
 .aboutAi {
     font-family: fangsong;
-    font-style: oblique;
+    font-size: 16px;
+}
+
+.about-login-href {
+    font-style: normal;
+    text-decoration: underline;
 }
