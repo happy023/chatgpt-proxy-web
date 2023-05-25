@@ -81,7 +81,7 @@ $(document).ready(function () {
         return false;
     });
 
-    // chatmanager.newTalk();
+    chatmanager.newTalk();
 
     $("#new-chat").click(chatmanager.newTalk);
 

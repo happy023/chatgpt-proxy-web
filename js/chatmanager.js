@@ -68,7 +68,9 @@ export function loadTalkList() {
 }
 
 export function newTalk() {
-    $("#article-wrapper").html("");
+    if (chat.getContextId()) {
+        $("#article-wrapper").html("");
+    }
     chat.setContextarray([]);
     chat.setContextId('talk-' + common.randomString());
     deselectAllRecords();
