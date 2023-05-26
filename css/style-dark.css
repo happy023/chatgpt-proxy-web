@@ -32,7 +32,7 @@ body {
     border-color: #353333;
 }
 
-.prompt-block {
+.chat-input {
     border: 1px solid;
     border-color: var(--zhuluan-dark-color);
     background-color: #40414F;
@@ -53,7 +53,7 @@ li.article-content {
     color: #fff;
 }
 
-.prompt-block #kw-target {
+.chat-input #kw-target {
     color: #fff;
 }
 
@@ -67,11 +67,11 @@ li.article-content {
     border-color: #353333;
 }
 
-.talk-history {
+.chat-history {
     color: #353333;
 }
 
-.talk-history-content {
+.chat-history-content {
     border-color: #353333;
     border: 1px solid; 
 }
@@ -80,12 +80,12 @@ input:checked+label::after {
     background-color: rgb(93, 92, 89);
 }
 
-.talk-history-item {
+.chat-history-item {
     color: white;
     background-color: #4c4949;
 }
 
-.talk-new {
+.chat-new {
     color: white;
     background-color: #2a2a2a;
 }

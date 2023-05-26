@@ -171,14 +171,14 @@ textarea {
 }
 
 
-.prompt-block textarea {
+.chat-input textarea {
     overflow: auto;
     height: auto;
     border: 0;
     resize: none;
 }
 
-.prompt-block textarea:focus {
+.chat-input textarea:focus {
     outline: none;
 }
 
@@ -452,7 +452,7 @@ a.unlinks-deco {
     padding-right: 10px;
 }
 
-.prompt-block {
+.chat-input {
     height: auto;
     padding: 5px 12px;
     min-height: 50px;
@@ -460,21 +460,21 @@ a.unlinks-deco {
     bottom: 20px;
 }
 
-.prompt-block .title {
+.chat-input .title {
     width: 65px;
     text-indent: 10px;
     color: var(--zhuluan-black-80-color);
 }
 
-.prompt-block .box {
+.chat-input .box {
     flex: 1
 }
 
-.prompt-block {
+.chat-input {
     border-radius: var(--zhuluan-primary-border-radius) var(--zhuluan-primary-border-radius) var(--zhuluan-primary-border-radius) var(--zhuluan-primary-border-radius);
 }
 
-.prompt-block #kw-target {
+.chat-input #kw-target {
     display: block;
     width: 100%;
     padding-left: 13px;
@@ -641,7 +641,7 @@ a.unlinks-deco {
     font-size: x-small;
 }
 
-.talk-history {
+.chat-history {
     flex: 1;
     margin: 0px 10px 0px 0px;
     /* padding-top: 10px; */
@@ -651,7 +651,7 @@ a.unlinks-deco {
 }
 
 @media (max-width:480px) {
-    .talk-history {
+    .chat-history {
         display: none;
     }
 
@@ -661,26 +661,26 @@ a.unlinks-deco {
 }
 
 @media (min-width:480px) {
-    .talk-history {
+    .chat-history {
         min-width: 250px;
     }
 }
 
-.talk-history-content {
+.chat-history-content {
     max-height: calc(100vh - 210px);
     overflow-y: auto;
 }
 
-.talk-history-content::-webkit-scrollbar {
+.chat-history-content::-webkit-scrollbar {
     width: 3px;
 }
 
-.talk-history-content::-webkit-scrollbar-thumb {
+.chat-history-content::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: rgb(180, 176, 176);
 }
 
-.talk-history-item {
+.chat-history-item {
     margin: 10px 15px 10px 15px;
     padding-left: 5px;
     padding-right: 5px;
@@ -695,19 +695,19 @@ a.unlinks-deco {
     font-size: 13px;
 }
 
-.talk-history-item-selected {
+.chat-history-item-selected {
     border: 3px solid;
     border-color: #e49d57;
 }
 
-.talk-history-title {
+.chat-history-title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 200px;
 }
 
-.talk-history-time {
+.chat-history-time {
     display: flex;
     font-size: 10px;
     align-items: right;
@@ -716,7 +716,7 @@ a.unlinks-deco {
     margin-top: 5px;
 }
 
-.talk-new {
+.chat-new {
     display: flex;
     color: white;
     margin: 10px 15px 10px 15px;
@@ -730,7 +730,7 @@ a.unlinks-deco {
     font-size: 13px;
 }
 
-.talk-new span {
+.chat-new span {
     justify-content: center;
     align-items: center;
     display: flex;

@@ -110,7 +110,7 @@ $(document).ready(function () {
 
     chatmanager.newTalk();
 
-    $("#new-chat").click(chatmanager.newTalk);
+    $("#chat-new").click(chatmanager.newTalk);
 
     $('#preset-text').change(common.insertPresetText);
 

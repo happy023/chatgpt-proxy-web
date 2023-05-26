@@ -24,7 +24,7 @@ body {
     border-color: #c8c5c0;
 }
 
-.prompt-block {
+.chat-input {
     border: 1px solid;
     border-color: #dcd3d3;
     background-color: white;
@@ -46,7 +46,7 @@ li.article-content {
     color: #1c2127;
 }
 
-.prompt-block #kw-target {
+.chat-input #kw-target {
     color: black;
 }
 
@@ -61,12 +61,12 @@ li.article-content {
     background-color: white;
 }
 
-.talk-history {
+.chat-history {
     color: black;
     background-color: #e7f8ff;
 }
 
-.talk-history-content {
+.chat-history-content {
     border: none;
 }
 
@@ -74,12 +74,12 @@ input:checked+label::after {
     background-color: #dddfe2;
 }
 
-.talk-history-item {
+.chat-history-item {
     color: black;
     background-color: #e0d4d4;
 }
 
-.talk-new {
+.chat-new {
     color: black;
     background-color: #e0d4d4;
 }

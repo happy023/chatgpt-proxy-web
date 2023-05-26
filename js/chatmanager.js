@@ -15,11 +15,11 @@ export function updateContext(contextarray) {
     let talkSize = record.contextarray.length;
     let talkTime = record.talkTime;
     if (talkDiv.length === 0) {
-        $('#talk-history-content').append(`
-            <div class="talk-history-item talk-history-item-selected" id="` + chat.getContextId() + `">
+        $('#chat-history-content').append(`
+            <div class="chat-history-item chat-history-item-selected" id="` + chat.getContextId() + `">
                 <div>
-                    <div class="talk-history-title">` + record.prompt + `</div>
-                    <div class="talk-history-time">
+                    <div class="chat-history-title">` + record.prompt + `</div>
+                    <div class="chat-history-time">
                         <span>`+ talkSize + `条对话</span>
                         <span>`+ talkTime + `</span>
                     </div>
@@ -32,7 +32,7 @@ export function updateContext(contextarray) {
         //选中当前项
         selectTalkRecord(contextId);
     } else {
-        $('#' + contextId + '>div>.talk-history-time')
+        $('#' + contextId + '>div>.chat-history-time')
             .html('<span>' + talkSize + '条对话</span><span>' + talkTime + '</span>');
     }
 }
@@ -47,11 +47,11 @@ export function loadTalkList() {
         const talkSize = context.contextarray.length;
         const talkTime = context.talkTime;
 
-        $('#talk-history-content').append(`
-            <div class="talk-history-item" id="` + contextId + `"> 
+        $('#chat-history-content').append(`
+            <div class="chat-history-item" id="` + contextId + `"> 
                 <div>
-                    <div class="talk-history-title">` + prompt + `</div>
-                    <div class="talk-history-time">
+                    <div class="chat-history-title">` + prompt + `</div>
+                    <div class="chat-history-time">
                         <span>`+ talkSize + `条对话</span>
                         <span>`+ talkTime + `</span>
                     </div>
@@ -158,12 +158,12 @@ function loadTalkContext(contextId) {
 }
 
 function deselectAllRecords() {
-    $('.talk-history-item').each((_, item) => {
-        $(item).removeClass('talk-history-item-selected');
+    $('.chat-history-item').each((_, item) => {
+        $(item).removeClass('chat-history-item-selected');
     });
 }
 
 function selectTalkRecord(id) {
     deselectAllRecords();
-    $('#' + id).addClass('talk-history-item-selected');
+    $('#' + id).addClass('chat-history-item-selected');
 }
