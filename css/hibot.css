@@ -657,6 +657,10 @@ a.unlinks-deco {
     border-radius: var(--zhuluan-primary-border-radius);
 }
 
+.chat-history .chat-remove {
+    display: none;
+}
+
 @media (max-width:480px) {
     .chat-history {
         display: none;

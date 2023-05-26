@@ -23,6 +23,7 @@ export function updateContext(contextarray) {
                         <span>`+ talkSize + `条对话</span>
                         <span>`+ talkTime + `</span>
                     </div>
+                    <div class="chat-remove"></div>
                 </div>
             </div>
         `);
@@ -55,6 +56,7 @@ export function loadTalkList() {
                         <span>`+ talkSize + `条对话</span>
                         <span>`+ talkTime + `</span>
                     </div>
+                    <div class="chat-remove"></div>
                 </div>
             </div>
         `);
@@ -153,7 +155,8 @@ function loadTalkContext(contextId) {
         $("#" + qChatId).text(prompt); 
 
         //答案
-        $("#article-wrapper").append('<li class="article-content" id="' + chatId + '"><div class="avatar">🐶 :</div><div id="' + aChatId + '"></div></li>');
+        $("#article-wrapper").append('<li class="article-content" id="' + chatId 
+        + '"><div class="avatar">🐶 :</div><div style="width:calc(100% - 30px)"  id="' + aChatId + '"></div></li>');
         answer = mdHtml.render(answer);
         $("#" + aChatId).html(answer);
         

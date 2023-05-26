@@ -16,7 +16,10 @@ function initEvents() {
                     break;
                 case 'about':
                     common.popupPanel(`
-                        <div class="about-layer">关于<br><br>联系邮箱：admin@okcode.cn</div>
+                        <div class="about-layer">关于<br><br>
+                        我是HiBot.dev，基于OpeanAI GPT 3.5接口实现,<br>
+                        本站禁止聊违法乱纪信息，如系统检测到将禁止您的IP访问
+                        </div>
                     `);
                     break;
                 case 'wechat-group':

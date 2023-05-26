@@ -112,7 +112,7 @@ export function send_post() {
                     qCmp.text(qCmp.text() + prompt[j]);
                 }
                 $("#article-wrapper").append('<li class="article-content" id="' + chatId
-                    + '"><div class="avatar">🐶 :</div><div id="' + aChatId + '"></div></li>');
+                    + '"><div class="avatar">🐶 :</div><div style="width:calc(100% - 30px)" id="' + aChatId + '"></div></li>');
 
                 let str_ = '';
                 let i = 0;
