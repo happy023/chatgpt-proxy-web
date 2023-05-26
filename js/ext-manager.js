@@ -23,17 +23,14 @@ function initIntellisense() {
 }
 
 function filter(inputValue) {
-    if (!inputValue) {
-        return;
-    }
     let array = $(".prompt-container li");
-
-    let regex = new RegExp(inputValue, "i");
-
     for (let i = 0; i < array.length; i++) {
         $(array[i]).show();
     }
-
+    if (!inputValue) {
+        return;
+    }
+    let regex = new RegExp(inputValue, "i");
     for (let i = 0; i < array.length; i++) {
         const me = $(array[i]);
         let promptText = $.trim(me.children('.prompt-content').text());
