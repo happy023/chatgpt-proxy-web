@@ -32,7 +32,7 @@ body {
     border-color: #353333;
 }
 
-.precast-block {
+.prompt-block {
     border: 1px solid;
     border-color: var(--zhuluan-dark-color);
     background-color: #40414F;
@@ -53,7 +53,7 @@ li.article-content {
     color: #fff;
 }
 
-.precast-block #kw-target {
+.prompt-block #kw-target {
     color: #fff;
 }
 

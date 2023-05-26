@@ -23,7 +23,7 @@ body {
     border: none;
 }
 
-.precast-block {
+.prompt-block {
     border: none;
     background-color: #75b6b8;
 }
@@ -43,7 +43,7 @@ li.article-content {
     color: #1c2127;
 }
 
-.precast-block #kw-target {
+.prompt-block #kw-target {
     color: black;
 }
 

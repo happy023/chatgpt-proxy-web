@@ -24,7 +24,7 @@ body {
     border-color: #c8c5c0;
 }
 
-.precast-block {
+.prompt-block {
     border: 1px solid;
     border-color: #dcd3d3;
     background-color: white;
@@ -46,7 +46,7 @@ li.article-content {
     color: #1c2127;
 }
 
-.precast-block #kw-target {
+.prompt-block #kw-target {
     color: black;
 }
 
