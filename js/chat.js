@@ -100,14 +100,20 @@ export function send_post() {
                 $("#kw-target").attr("disabled", true);
                 common.autoresize();
                 $("#ai-btn").html('<i class="iconfont icon-wuguan"></i>中止');
-                // layer.msg("处理成功！");
+
                 isstarted = false;
-                let answerId = common.randomString(16);
-                $("#article-wrapper").append('<li class="article-title" id="q' + answerId + '"><pre></pre></li>');
+                let chatId = common.randomString(16);
+                let aChatId = 'ac-' + chatId;
+                let qChatId = 'q-' + chatId;
+
+                $("#article-wrapper").append('<li class="article-title"><div class="avatar">😃 :</div><pre id="' + qChatId + '"></pre></li>');
                 for (let j = 0; j < prompt.length; j++) {
-                    $("#q" + answerId).children('pre').text($("#q" + answerId).children('pre').text() + prompt[j]);
+                    let qCmp = $("#" + qChatId);
+                    qCmp.text(qCmp.text() + prompt[j]);
                 }
-                $("#article-wrapper").append('<li class="article-content" id="' + answerId + '"></li>');
+                $("#article-wrapper").append('<li class="article-content" id="' + chatId
+                    + '"><div class="avatar">🐶 :</div><div id="' + aChatId + '"></div></li>');
+
                 let str_ = '';
                 let i = 0;
                 const intervalTime = 15;
@@ -136,9 +142,9 @@ export function send_post() {
                         }
                     }
                     newalltext = mdHtml.render(strforcode);
-                    $("#" + answerId).html(newalltext);
+                    $("#" + aChatId).html(newalltext);
                     if (islastletter) MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-                    $("#" + answerId + " pre code").each(function () {
+                    $("#" + chatId + " pre code").each(function () {
                         $(this).html("<button class='codebutton'>复制</button>" + $(this).html());
                         $(this).find('.codebutton').first().click(common.copycode);
                     });

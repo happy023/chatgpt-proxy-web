@@ -144,16 +144,24 @@ function loadTalkContext(contextId) {
         let prompt = items[i][0];
         let answer = items[i][1];
 
-        let talkId = common.randomString(16);
+        let chatId = common.randomString(16);
+        let aChatId = 'ac-' + chatId;
+        let qChatId = 'q-' + chatId;
+
         //问题
-        $("#article-wrapper").append('<li class="article-title" id="q' + talkId + '"><pre></pre></li>');
-        for (let j = 0; j < prompt.length; j++) {
-            $("#q" + talkId).children('pre').text($("#q" + talkId).children('pre').text() + prompt[j]);
-        }
+        $("#article-wrapper").append('<li class="article-title"><div class="avatar">😃 :</div><pre id="' + qChatId + '"></pre></li>');
+        $("#" + qChatId).text(prompt); 
+
         //答案
-        $("#article-wrapper").append('<li class="article-content" id="' + talkId + '"></li>');
+        $("#article-wrapper").append('<li class="article-content" id="' + chatId + '"><div class="avatar">🐶 :</div><div id="' + aChatId + '"></div></li>');
         answer = mdHtml.render(answer);
-        $("#" + talkId).html(answer);
+        $("#" + aChatId).html(answer);
+        
+        //如果有代码，需要加上复制按钮
+        $("#" + chatId + " pre code").each(function () {
+            $(this).html("<button class='codebutton'>复制</button>" + $(this).html());
+            $(this).find('.codebutton').first().click(common.copycode);
+        });
     }
 }
 
