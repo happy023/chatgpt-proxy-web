@@ -69,20 +69,6 @@ $(document).ready(function () {
     });
 
     $('#kw-target').on('input', function (e) {
-        if (e.target.value == '/') {
-            if (window.promptHolderLoaded) {
-                $('#prompt-list-holder').show();
-                $('#article-wrapper').css('height', 'calc(100vh - 470px)');
-            } else {
-                $("#prompt-list-holder").load("/prompts.html");
-                $('#prompt-list-holder').show();
-                // $('#prompt-list-holder').css('height', '300px');
-                $('#article-wrapper').css('height', 'calc(100vh - 470px)');
-            }
-        } else if (!e.target.value) {
-            $('#prompt-list-holder').hide();
-            $('#article-wrapper').css('height', 'calc(100vh - 160px)');
-        }
         common.autoresize();
     });
 
@@ -125,4 +111,5 @@ $(document).ready(function () {
 //异步导入其它模块
 await import('./theme.js');
 await import('./login.js');
+await import('./ext-manager.js');
 await import('./prompts.json.js');
