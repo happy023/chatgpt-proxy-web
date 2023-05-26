@@ -10,6 +10,7 @@ function initIntellisense() {
                 $("#prompt-list-holder").load("/prompts.html");
                 loaded = true;
                 $('#prompt-list-holder').show();
+                $('#prompt-list-holder').css('height', 300);
                 $('#article-wrapper').css('height', 'calc(100vh - 470px)');
             }
             filter(inputValue.substring(1));
