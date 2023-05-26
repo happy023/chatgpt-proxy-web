@@ -68,7 +68,7 @@
     }
 </style>
 
-<div class="prompt-container" id="prompt-container">   
+<div class="prompt-container" id="prompt-container">
 </div>
 
 <script>
@@ -77,7 +77,7 @@
     let cnPrompts = prompts.cn;
     let options = '<li class="prompt-selected"><div class="prompt-caption">' + cnPrompts[0][0] + '</div><div class="prompt-content">' + cnPrompts[0][1] + '</div></li>';
     for (let i = 1; i < cnPrompts.length; i++) {
-        options += '<li><div class="prompt-caption">' + cnPrompts[i][0] + '</div><div class="prompt-content">' + cnPrompts[i][1] + '</div></li>'; 
+        options += '<li><div class="prompt-caption">' + cnPrompts[i][0] + '</div><div class="prompt-content">' + cnPrompts[i][1] + '</div></li>';
     }
     $('#prompt-container').html(options);
 
@@ -86,21 +86,33 @@
             return;
         }
         // 箭头下键被按下
-        let allItems = $(".prompt-container li");
-        let currIdx = clearPromptSelected();
-        let nextIdx = 0;
-        if (event.key == "ArrowDown") {
-            nextIdx = currIdx + 1;
-        } else if (event.key === "ArrowUp") {
-            nextIdx = currIdx - 1;
-        }
-        if (nextIdx < 0) {
-            nextIdx = allItems.length - 1;
-        } else if (nextIdx >= allItems.length) {
-            nextIdx = 0;
-        }
 
-        allItems.eq(nextIdx).addClass('prompt-selected');
+        let allItems = $(".prompt-container li");
+        //清除上一个选中项
+        let lastIndex = clearPromptSelected();
+        //获取上一个选中项
+        let curr = allItems.eq(lastIndex);
+        //获取上一个选中项高度，用于列表滚动
+        let currHeight = parseFloat(curr.css('height').replace('px', ''));
+        console.log('currHeight', currHeight);
+        //移动方向处理
+        let increment = 0;
+        if (event.key == "ArrowDown") {
+            increment = 1;
+        } else if (event.key === "ArrowUp") {
+            increment = -1;
+        }
+        //滚动列表
+        document.getElementById("prompt-list-holder").scrollTop += increment * currHeight;
+
+        //选中当前选中项
+        let nextIndex = lastIndex + increment;
+        if (nextIndex < 0) {
+            nextIndex = allItems.length - 1;
+        } else if (nextIndex >= allItems.length) {
+            nextIndex = 0;
+        }
+        allItems.eq(nextIndex).addClass('prompt-selected');
     });
 
     function selectPromptItem() {
@@ -133,7 +145,6 @@
     $(".prompt-container li").mouseover(function () {
         clearPromptSelected();
         $(this).addClass('prompt-selected');
-        console.log('mouseenter');
     });
 
     function clearPromptSelected() {
