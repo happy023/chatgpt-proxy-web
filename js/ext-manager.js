@@ -3,16 +3,8 @@ function initIntellisense() {
     $('#kw-target').on('input', function (e) {
         let inputValue = e.target.value || '';
         if (inputValue.startsWith('/')) {
-            if (loaded) {
-                $('#prompt-list-holder').show();
-                $('#article-wrapper').css('height', 'calc(100vh - 470px)');
-            } else {
-                $("#prompt-list-holder").load("/prompts.html");
-                loaded = true;
-                $('#prompt-list-holder').show();
-                $('#prompt-list-holder').css('height', 300);
-                $('#article-wrapper').css('height', 'calc(100vh - 470px)');
-            }
+            $('#prompt-list-holder').show();
+            $('#article-wrapper').css('height', 'calc(100vh - 470px)');
             filter(inputValue.substring(1));
         } else {
             $(".prompt-container li").each((_, item) => $(item).show());
@@ -20,6 +12,10 @@ function initIntellisense() {
             $('#article-wrapper').css('height', 'calc(100vh - 160px)');
         }
     });
+    //预加载
+    $("#prompt-list-holder").load("/prompts.html");
+    $('#prompt-list-holder').css('height', 300);
+    loaded = true;
 }
 
 function filter(inputValue) {
