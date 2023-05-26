@@ -521,6 +521,11 @@ a.unlinks-deco {
     .container {
         width: 99%;
     }
+
+    .article {
+        margin: 0px;
+    }
+
 }
 
 

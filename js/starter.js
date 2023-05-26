@@ -105,6 +105,9 @@ $(document).ready(function () {
     if (!common.isMobile()) {
         $('#sidebar').show();
         $('#layout-header').show();
+    } else {
+        $('#user-id').hide();
+        $('.header-about').hide();
     }
 });
 
