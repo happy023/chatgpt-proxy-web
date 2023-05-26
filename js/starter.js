@@ -41,7 +41,7 @@ function initEvents() {
         $('#wechat-popup').hide();
     });
 
-    $('#about-login-href').click(function(){
+    $('#about-login-href').click(function () {
         common.popupPanel(`
             <div class="about-layer">关于微信扫码登录<br><br>
                 <ul>
@@ -49,7 +49,7 @@ function initEvents() {
                     <li style='list-style: circle;'>登录之后，后台会为您分配独立的api通道使用，AI的响应速度会更加快。</li>
                 </ul>
             </div>
-        `,[400,200]); 
+        `, [400, 200]);
     });
 }
 
@@ -68,7 +68,21 @@ $(document).ready(function () {
         common.autoresize();
     });
 
-    $('#kw-target').on('input', function () {
+    $('#kw-target').on('input', function (e) {
+        if (e.target.value == '/') {
+            if (window.promptHolderLoaded) {
+                $('#prompt-list-holder').show();
+                $('#article-wrapper').css('height', 'calc(100vh - 470px)');
+            } else {
+                $("#prompt-list-holder").load("/prompts.html");
+                $('#prompt-list-holder').show();
+                // $('#prompt-list-holder').css('height', '300px');
+                $('#article-wrapper').css('height', 'calc(100vh - 470px)');
+            }
+        } else if (!e.target.value) {
+            $('#prompt-list-holder').hide();
+            $('#article-wrapper').css('height', 'calc(100vh - 160px)');
+        }
         common.autoresize();
     });
 

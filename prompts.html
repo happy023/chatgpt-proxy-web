@@ -1,0 +1,160 @@
+<style>
+    .prompt-list-holder {
+        background-color: #353333;
+        border: none;
+        margin: 10px 0 0px 0;
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    .prompt-list-holder::-webkit-scrollbar {
+        border-radius: 10px;
+        width: 2px;
+    }
+
+    .prompt-list-holder::-webkit-scrollbar-thumb {
+        background: rgb(180, 176, 176);
+    }
+
+    .prompt-container {
+        background-color: #353333;
+        padding: 0 0 0 5px;
+        border: none;
+        margin: 10px 0 10px 0;
+    }
+
+    .prompt-container li {
+        color: white;
+        margin: 5px 0px 5px 0px;
+        padding: 5px;
+        border-radius: 10px;
+        display: flex;
+        cursor: default;
+        font-size: 13px;
+        flex-direction: column;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .prompt-selected {
+        border: 1PX solid;
+        border-color: #b2bb9a;
+    }
+
+    .prompt-title {
+        font-size: 15px;
+    }
+
+    .prompt-content {
+        font-size: 12px;
+        font-family: 'fangsong';
+    }
+</style>
+
+
+<div class="prompt-container">
+    <li class="prompt-selected">
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+    <li>
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+    <li>
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+    <li>
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+    <li>
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+    <li>
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+    <li>
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+    <li>
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+    <li>
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+    <li>
+        <div class="prompt-title">充当Linux终端</div>
+        <div class="prompt-content">
+            这是提示书11111这是提示书11111这是提示书11111这是提示书11111这是提示书11111
+        </div>
+    </li>
+</div>
+
+<script>
+    let promptHolderLoaded = true;
+
+    $(document).keydown(function (event) {
+        if (event.key !== "ArrowDown" && event.key !== "ArrowUp") {
+            return;
+        }
+        // 箭头下键被按下
+        let allItems = $(".prompt-container li");
+        let currIdx = clearPromptSelected();
+        let nextIdx = 0;
+        if (event.key == "ArrowDown") {
+            nextIdx = currIdx + 1;
+        } else if (event.key === "ArrowUp") {
+            nextIdx = currIdx - 1;
+        }
+        if (nextIdx < 0) {
+            nextIdx = allItems.length - 1;
+        } else if (nextIdx >= allItems.length) {
+            nextIdx = 0;
+        }
+
+        allItems.eq(nextIdx).addClass('prompt-selected');
+    });
+
+    $(".prompt-container li").mouseover(function () {
+        clearPromptSelected();
+        $(this).addClass('prompt-selected');
+        console.log('mouseenter');
+    });
+
+    function clearPromptSelected() {
+        let array = $(".prompt-container li");
+        for (let i = 0; i < array.length; i++) {
+            const element = array[i];
+            if ($(element).hasClass('prompt-selected')) {
+                $(element).removeClass('prompt-selected');
+                return i;
+            }
+        }
+    }
+</script>
