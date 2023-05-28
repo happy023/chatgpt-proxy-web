@@ -1,8 +1,8 @@
 body {
     background-color: #f5f4f4;
-} 
+}
 
-.header-logo { 
+.header-logo {
     color: black;
 }
 
@@ -76,22 +76,23 @@ input:checked+label::after {
 
 .chat-history-item {
     color: black;
-    background-color: #e0d4d4;
+    background-color: #ffffff;
 }
 
 .chat-new {
     color: black;
-    background-color: #e0d4d4;
+    background-color: #e2dfdf;
 }
 
 .layui-layer {
     background-color: #fff;
     box-shadow: 1px 1px 50px rgba(0, 0, 0, .3);
 }
+
 .aboutAi {
-    color: black; 
+    color: black;
 }
 
-.about-login-href { 
-    color: black; 
+.about-login-href {
+    color: black;
 }

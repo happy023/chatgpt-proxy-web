@@ -657,10 +657,6 @@ a.unlinks-deco {
     border-radius: var(--zhuluan-primary-border-radius);
 }
 
-.chat-history .chat-remove {
-    display: none;
-}
-
 @media (max-width:480px) {
     .chat-history {
         display: none;
@@ -680,6 +676,7 @@ a.unlinks-deco {
 .chat-history-content {
     max-height: calc(100vh - 210px);
     overflow-y: auto;
+    border-radius: 5px;
 }
 
 .chat-history-content::-webkit-scrollbar {
@@ -702,8 +699,9 @@ a.unlinks-deco {
     /* justify-content: center; */
     justify-content: space-around;
     align-items: center;
-    cursor: pointer;
+    cursor: default;
     font-size: 13px;
+    position: relative;
 }
 
 .chat-history-item-selected {
@@ -725,6 +723,27 @@ a.unlinks-deco {
     color: darkgray;
     justify-content: space-between;
     margin-top: 5px;
+}
+
+.chat-history .chat-remove {
+    display: none;
+    width: 15px;
+    height: 15px;
+    background-image: url(../images/delete.png);
+    background-position: center center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.chat-history-item:hover {
+    border: 2px solid;
+    border-color: #e49d57;
+}
+
+.chat-history-item:hover .chat-remove {
+    display: block;
 }
 
 .chat-new {

@@ -103,6 +103,19 @@ $(document).ready(function () {
 
     $('#preset-text').change(common.insertPresetText);
 
+    $('.chat-remove').click(function (event) {
+        console.log(this);
+        let me = $(this);
+        let chatId = me.attr('value');
+        chatmanager.deleteTalk(chatId);
+        me.parent().parent().remove();
+        if(chatId===chat.getContextId()){
+            $('#article-wrapper').html('');
+        }
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+    });
+
     initEvents();
 
     if (!common.isMobile()) {

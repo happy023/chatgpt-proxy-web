@@ -56,7 +56,7 @@ export function loadTalkList() {
                         <span>`+ talkSize + `条对话</span>
                         <span>`+ talkTime + `</span>
                     </div>
-                    <div class="chat-remove"></div>
+                    <div class="chat-remove" value="` + contextId + `"></div>
                 </div>
             </div>
         `);
@@ -74,6 +74,22 @@ export function newTalk() {
     chat.setContextarray([]);
     chat.setContextId('talk-' + common.randomString());
     deselectAllRecords();
+}
+
+export function deleteTalk(contextId) {
+    let contextIdList = getContextIdList();
+    let newContextIdList = [];
+    for (let i = 0; i < contextIdList.length; i++) {
+        const _contextId = contextIdList[i];
+        if (_contextId !== contextId) {
+            newContextIdList.push(_contextId);
+        }
+    }
+    let storeId = contextIdToStoreId(contextId);
+    //移除聊天记录数据
+    localStorage.removeItem(storeId);
+    //更新聊天记录列表
+    localStorage.setItem('contextIdList', JSON.stringify(newContextIdList));
 }
 
 function findContextById(contextId) {
@@ -152,14 +168,14 @@ function loadTalkContext(contextId) {
 
         //问题
         $("#article-wrapper").append('<li class="article-title"><div class="avatar">😃 :</div><pre id="' + qChatId + '"></pre></li>');
-        $("#" + qChatId).text(prompt); 
+        $("#" + qChatId).text(prompt);
 
         //答案
-        $("#article-wrapper").append('<li class="article-content" id="' + chatId 
-        + '"><div class="avatar">🐶 :</div><div style="width:calc(100% - 30px)"  id="' + aChatId + '"></div></li>');
+        $("#article-wrapper").append('<li class="article-content" id="' + chatId
+            + '"><div class="avatar">🐶 :</div><div style="width:calc(100% - 30px)"  id="' + aChatId + '"></div></li>');
         answer = mdHtml.render(answer);
         $("#" + aChatId).html(answer);
-        
+
         //如果有代码，需要加上复制按钮
         $("#" + chatId + " pre code").each(function () {
             $(this).html("<button class='codebutton'>复制</button>" + $(this).html());
