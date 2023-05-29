@@ -17,8 +17,8 @@ function initEvents() {
                 case 'about':
                     common.popupPanel(`
                         <div class="about-layer">关于<br><br>
-                        我是HiBot.dev，基于OpeanAI GPT 3.5接口实现,<br>
-                        本站禁止聊违法乱纪信息，如系统检测到将禁止您的IP访问
+                        我是HiBot.dev，基于OpeanAI GPT3.5接口实现,<br>
+                        本站免费使用，请不要发送违法乱纪信息，维护良好网络环境
                         </div>
                     `);
                     break;
