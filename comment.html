@@ -1,0 +1,94 @@
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>HiBot - 反馈与建议</title>
+    <style>
+        pre {
+            font-size: 17px;
+            font-family: cursive;
+        }
+
+        .footer,
+        .center,
+        .content-title,
+        .layout-header {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .content-title{
+            margin: 20px 20px 50px 20px;
+        }
+
+        .layout-content {
+            width: 80%;
+        }
+
+        .footer {
+            font-size: 10px;
+            margin-top: 50px;
+        }
+
+        .footer a {
+            text-decoration: underline;
+            color: black;
+            font-size: 10px;
+        }
+
+        .center {
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+    </style>
+</head>
+
+<div class="layout-content">
+    <section class="layout-header" id="layout-header">
+        <div class="header-logo">
+            <h2 class="logo">🐶HiBot.dev</h2>
+        </div>
+    </section>
+    <div class="content-title">
+        如您有任何问题和建议，请在这里发送评论。
+    </div>
+    <!--<div class="commentbox"></div>-->
+    <!--<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>-->
+    <!--<script>commentBox('5654002297470976-proj')</script>-->
+
+    <div class="center" id="cusdis_thread" data-host="https://cusdis.com"
+        data-app-id="2d4ec86a-0ec1-4318-8ad7-5820b6cafaaa" data-page-id="HiBot-Discuss"
+        data-page-url="https://chat.hibot.dev/comment.html" data-page-title="HiBot-Discuss" data-theme="light"></div>
+    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+    <script>
+        window.CUSDIS_LOCALE = {
+            powered_by: 'Comments powered by Cusdis',
+            post_comment: '发送评论',
+            loading: '正在加载',
+
+            // comment
+            email: '联系邮箱 (可选)',
+            nickname: '昵称 *',
+            reply_placeholder: '内容 *',
+            reply_btn: '回复',
+            sending: '发送...',
+
+            // reply
+            mod_badge: 'MOD',
+            content_is_required: '内容是必需的',
+            nickname_is_required: '昵称是必需的',
+
+            comment_has_been_sent:
+                '您的评论已发送。请等待批准.',
+        }
+    </script>
+
+    <section class="footer">
+        <div class="header-about">Powered by
+            <a class="links" href="http://okcode.cn/" target="_blank">OKCODE.CN</a>
+        </div>
+    </section>
+</div>

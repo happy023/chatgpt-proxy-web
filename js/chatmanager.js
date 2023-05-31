@@ -68,9 +68,26 @@ export function loadTalkList() {
 }
 
 export function newTalk() {
-    if (chat.getContextId()) {
-        $("#article-wrapper").html("");
-    }
+    // if (chat.getContextId()) {
+        // $("#article-wrapper").html("");
+    // }
+    $("#article-wrapper").html(`
+        <li class="article-content">
+            <div class="avatar">🐶 :</div>
+            <div>
+                <p class="line aboutAi" data-line="0">
+                    您好，我是HiBot.dev，基于OpeanAI GPT3.5接口实现，本站免费使用 <br>
+                    请不要发送违法乱纪信息，一起维护良好网络环境，谢谢！ <br>
+                    <!-- 点击上面登录按钮 微信扫码登录 免费获取更快的响应速度
+                    <a class="about-login-href" id="about-login-href" href="#"> 关于登录？</a> <br> -->
+                    在PC上使用体验更佳,建议使用Chrome类浏览器(Chromium内核)，其它浏览器可能不兼容<br>
+                    问题反馈与建议:admin@okcode.cn 
+                    <a class="about-login-href" href="aboutme.html" target="_blank">关于我</a>&nbsp;&nbsp;&nbsp;
+                    <a class="about-login-href" href="comment.html" target="_blank">反馈与建议</a>
+                </p>
+            </div>
+        </li>
+    `);
     chat.setContextarray([]);
     chat.setContextId('talk-' + common.randomString());
     deselectAllRecords();

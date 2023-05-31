@@ -5,39 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>HiBot - 您的智能助手</title>
+    <title>HiBot - 关于</title>
     <style>
         pre {
             font-size: 17px;
             font-family: cursive;
         }
+
+        .footer,
+        .center,
+        .layout-header {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer {
+            font-size: 10px;
+        }
+
+        .footer a {
+            text-decoration: underline;
+            color: black;
+            font-size: 10px;
+        }
     </style>
 </head>
-<pre>
-    您好，我是HiBot.dev，基于OpeanAI GPT3.5接口实现，本站免费使用
+
+<section class="layout-header" id="layout-header">
+    <div class="header-logo">
+        <h2 class="logo">🐶HiBot.dev</h2>
+    </div>
+</section>
+
+<section class="center">
+    <pre>
+        您好，我是HiBot.dev，基于OpeanAI GPT3.5接口实现，本站免费使用
+        
+        请不要发送违法乱纪信息，一起维护良好网络环境，谢谢！
+        
+        在PC上使用体验更佳,建议使用Chrome类浏览器(Chromium内核)，其它浏览器可能不兼容
+     
+        由于API资源有限，单次聊天上下文限制为5条，即您和AI对话5轮之后，AI会忘记您第一次发给他的消息
+        
+        邮箱：admin@okcode.cn
+        微信：
+        <img src="images/weixin.gif" style="width: 198px;">> 
     
-    请不要发送违法乱纪信息，一起维护良好网络环境，谢谢！
     
-    在PC上使用体验更佳,建议使用Chrome类浏览器(Chromium内核)，其它浏览器可能不兼容
- 
-    由于API资源有限，单次聊天上下文限制为5条，即您和AI对话5轮之后，AI会忘记您第一次发给他的消息
-
+        更新日志
     
+        --------------------------------------------------------------------------- 
+        #2012-05-29
     
-    邮箱：admin@okcode.cn
-    微信：
-    <img src="images/weixin.gif" style="width: 198px;">> 
-
-
-    更新日志
-
-    --------------------------------------------------------------------------- 
-    #2012-05-29
-
-    增加了历史聊天记录（浏览器本地存储）、微信登录(通过小程序)、快捷唤起预设话术、优化了界面
-
-    --------------------------------------------------------------------------- 
-    #2012-04-22
+        增加了历史聊天记录（浏览器本地存储）、微信登录(通过小程序)、快捷唤起预设话术、优化了界面
     
-    本站代码修改自http://github.com/dirk1983/chatgpt，根据个人喜好对界面进行了大幅改动
-</pre>
+        --------------------------------------------------------------------------- 
+        #2012-04-22
+        
+        本站代码修改自http://github.com/dirk1983/chatgpt，根据个人喜好对界面进行了大幅改动
+    </pre>
+</section>
+
+<section class="footer">
+    <div class="header-about">Powered by
+        <a class="links" href="http://okcode.cn/" target="_blank">OKCODE.CN</a>
+    </div>
+</section>
