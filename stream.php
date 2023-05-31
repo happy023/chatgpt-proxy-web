@@ -14,6 +14,10 @@ session_start();
 $postData = $_SESSION['data'];
 $_SESSION['response'] = "";
 
+$api = $config_values["api"];
+if(!$api){
+    $api = 'https://api.openai.com/v1/chat/completions';
+}
 $apiKey = $config_values["apiKey"];
 $organization = $config_values["organization"];
 $chunk_size = $config_values["chunk_size"];
@@ -102,7 +106,7 @@ $callback = function ($ch, $data) {
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
+curl_setopt($ch, CURLOPT_URL, $api);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_POST, 1);

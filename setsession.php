@@ -1,15 +1,15 @@
 <?php
 session_start();
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
-if (preg_match('/(Mobile|Android|iPhone|iPad|Windows Phone)/i', $user_agent)) {
-    // 访问网页的是手机，暂时不校验手机访问
-} else {
-    // 访问网页的是电脑,需要校验
-    if(!isset($_SESSION['user_id'])){  
-        echo '{"success":false,"login":false}';
-        exit();
-    } 
-}
+// if (preg_match('/(Mobile|Android|iPhone|iPad|Windows Phone)/i', $user_agent)) {
+//     // 访问网页的是手机，暂时不校验手机访问
+// } else {
+//     // 访问网页的是电脑,需要校验
+//     if(!isset($_SESSION['user_id'])){  
+//         echo '{"success":false,"login":false}';
+//         exit();
+//     } 
+// }
 $context = json_decode($_POST['context'] ?: "[]") ?: [];
 $postData = [
     "model" => "gpt-3.5-turbo",
