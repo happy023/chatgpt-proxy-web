@@ -3,6 +3,27 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: text/event-stream");
 header("X-Accel-Buffering: no");
 
+//轮询key
+function next_key() { 
+    $all_keys = array(
+    	'sk-xxx',
+    	'sk-xxx',
+    	'sk-xxx',
+    	'sk-xxx',
+    	'sk-xxx',
+    	'sk-xxx',
+    	'sk-xxx',
+    	'sk-xxx'
+    );
+    // 获取当前索引值
+    $key_index = isset($_SESSION['key_index']) ? $_SESSION['key_index'] : 0;
+    $key = $all_keys[$key_index];
+    $_SESSION['key_index'] = ($key_index + 1) % count($all_keys);
+    
+    return $key;
+}
+
+
 $config_values = parse_ini_file("okcode-config.ini");
 
 $logfile = $config_values["log_path"]; 
@@ -25,6 +46,9 @@ $chunk_size = $config_values["chunk_size"];
 if (isset($_SESSION['key'])) {
     $apiKey = $_SESSION['key'];
 }
+
+//使用轮询key
+// $apiKey = next_key();
 
 $headers  = [
     'Accept: application/json',
@@ -135,6 +159,9 @@ $questionarr = json_decode($_SESSION['data'], true);
 $filecontent = $_SERVER["REMOTE_ADDR"] . " | " . date("Y-m-d H:i:s") . "\n";
 $filecontent .= "Q:" . end($questionarr['messages'])['content'] .  "\nA:" . trim($answer) . "\n----------------\n";
 $user_id = "anonymous";
+if(isset($_SERVER["REMOTE_ADDR"])){
+    $user_id = $_SERVER["REMOTE_ADDR"];
+}
 if(isset($_SESSION['user_id'])){ 
     $user_id = $_SESSION['user_id'];
 }
